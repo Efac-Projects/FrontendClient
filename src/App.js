@@ -8,8 +8,9 @@ import About from './components/Pages/About';
 import Services from './components/Pages/Services';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/Signup';
+import ForgotPassword from './components/auth/ForgotPassword';
+import AppointmentMaking from './components/Pages/AppointmentMaking';
 
-import LisiItems from './components/layouts/AdminDashboard/lisiItems';
 
 const App = () => {
   return (
@@ -20,7 +21,9 @@ const App = () => {
         <Route path='/about' component={About} />
         <Route path='/services' component={Services} />
         <Route path='/signin' component={SignIn} />
-        <Route path='/sign-up' component={SignUp} />
+        <Route path='/signup' component={SignUp} />
+        <Route path='/ForgotPassword' component={ForgotPassword} />
+        <Route path='/AppointmentMaking' component={AppointmentMaking} />
       </Switch>
     </Router>
   );

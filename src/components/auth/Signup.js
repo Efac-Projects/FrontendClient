@@ -15,9 +15,9 @@ import { pink } from '@material-ui/core/colors';
 
 function Copyright() {
   return (
-    <Typography variant='body2' color='textSecondary' align='center'>
+    <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color='primary' href='#'>
+      <Link color="primary" href="#">
         NoQueue Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -31,8 +31,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage:
-      'url(https://invention.si.edu/sites/default/files/styles/story_banner_image/public/blog-guest-fox-susannah-2017-03-09-shutterstock_189632216-banner-edit.jpg?itok=eNxGJoO4)',
+    backgroundImage: 'url(https://invention.si.edu/sites/default/files/styles/story_banner_image/public/blog-guest-fox-susannah-2017-03-09-shutterstock_189632216-banner-edit.jpg?itok=eNxGJoO4)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -59,73 +58,74 @@ export default function SignUp() {
   const classes = useStyles();
 
   return (
-    <Grid container component='main' className={classes.root}>
+    <Grid container component="main" className={classes.root}>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
 
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
+
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-
-          <Typography component='h1' variant='h5'>
+          
+          <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
 
           <form className={classes.form} noValidate>
             <TextField
-              variant='outlined'
-              margin='normal'
+              variant="outlined"
+              margin="normal"
               required
               fullWidth
-              id='fullname'
-              label='Full Name'
-              name='fullname'
+              id="fullname"
+              label="Full Name"
+              name="fullname"
             />
 
             <TextField
-              variant='outlined'
-              margin='normal'
+              variant="outlined"
+              margin="normal"
               required
               fullWidth
-              name='email'
-              label='Email'
-              type='eamil'
-              id='email'
+              name="email"
+              label="Email"
+              type="eamil"
+              id="email"
             />
 
             <TextField
-              variant='outlined'
-              margin='normal'
+              variant="outlined"
+              margin="normal"
               required
               fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
             />
 
             <TextField
-              variant='outlined'
-              margin='normal'
+              variant="outlined"
+              margin="normal"
               required
               fullWidth
-              name='confirm'
-              label='Confirm Password'
-              type='password'
-              id='confirm'
+              name="confirm"
+              label="Confirm Password"
+              type="password"
+              id="confirm"
             />
-
+            
             <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label='I agree all statements in terms of service'
+              control={<Checkbox value="remember" color="primary" />}
+              label="I agree all statements in terms of service"
             />
 
             <Button
-              type='submit'
+              type="submit"
               fullWidth
-              variant='contained'
-              color='primary'
+              variant="contained"
+              color="primary"
               className={classes.submit}
             >
               Sign Up
@@ -134,8 +134,8 @@ export default function SignUp() {
             <Grid container>
               <Grid item>
                 {'Already have an account? '}
-                <Link href='http://localhost:3000/signin' variant='body2'>
-                  {'Login here'}
+                <Link href="signin" variant="body2">
+                  {"Login here"}
                 </Link>
               </Grid>
             </Grid>
@@ -143,6 +143,7 @@ export default function SignUp() {
             <Box mt={5}>
               <Copyright />
             </Box>
+
           </form>
         </div>
       </Grid>
