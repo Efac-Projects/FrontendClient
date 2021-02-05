@@ -17,7 +17,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="primary" href="#">
+      <Link color="primary" href="Home">
         NoQueue Website
       </Link>{' '}
       {new Date().getFullYear()}

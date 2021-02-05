@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://invention.si.edu/sites/default/files/styles/story_banner_image/public/blog-guest-fox-susannah-2017-03-09-shutterstock_189632216-banner-edit.jpg?itok=eNxGJoO4)',
+    backgroundImage: 'url(https://img.freepik.com/free-photo/woman-typing-keyboard-laptop-account-login-screen-working-office-table-background-safety-concepts-about-internet-use_2034-1339.jpg?size=626&ext=jpg)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function SignIn() {
+export default function AdminSignin() {
   const classes = useStyles();
 
   return (
@@ -71,7 +71,7 @@ export default function SignIn() {
           </Avatar>
 
           <Typography component="h1" variant="h5">
-            Sign in
+            Admin Sign in
           </Typography>
 
           <form className={classes.form} noValidate>
@@ -81,7 +81,7 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label="Admin Email Address"
               name="email"
             />
 
@@ -119,7 +119,7 @@ export default function SignIn() {
               </Grid>
               <Grid item>
 
-                <Link href="signup" variant="body2">
+                <Link href="#" variant="body2">
                   {"Not a member? Sign Up"}
                 </Link>
               </Grid>

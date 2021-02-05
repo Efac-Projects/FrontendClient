@@ -10,6 +10,7 @@ import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/Signup';
 import ForgotPassword from './components/auth/ForgotPassword';
 import AppointmentMaking from './components/Pages/AppointmentMaking';
+import AdminSignin from './components/layouts/AdminDashboard/AdminSignin';
 
 
 const App = () => {
@@ -18,12 +19,14 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home} />
-        <Route path='/about' component={About} />
         <Route path='/services' component={Services} />
         <Route path='/signin' component={SignIn} />
         <Route path='/signup' component={SignUp} />
         <Route path='/ForgotPassword' component={ForgotPassword} />
         <Route path='/AppointmentMaking' component={AppointmentMaking} />
+        <Route path='/About' component={About} />
+        <Route path='/AdminSignin' component={AdminSignin} />
+
       </Switch>
     </Router>
   );

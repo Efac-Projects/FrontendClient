@@ -12,12 +12,14 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import { lightBlue } from '@material-ui/core/colors';
+import { blueGrey } from '@material-ui/core/colors';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="primary" href="#">
+      <Link color="primary" href="Home">
         NoQueue Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -31,10 +33,12 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   paper: {
-    margin: theme.spacing(5, 4),
+    margin: theme.spacing(0,0),
     display: 'flex',
     flexDirection:'column',
     alignItems: 'center',
+    backgroundColor: lightBlue[50],
+    
   },
   avatar: {
     margin: theme.spacing(1),
@@ -47,20 +51,24 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3,0,2),
   },
+  typo:{
+    color: blueGrey[700],
+    },
 
 }));
 
-export default function ForgotPassword() {
+export default function AppointmentMaking() {
   const classes = useStyles();
 
   return (
     
         <div className={classes.paper}>
           
-
+          <Box mt={5}></Box>
           <Typography component="h1" variant="h5">
-            Personal details of the patient
+            Personal details of patient
           </Typography>
+          <Box mt={2}></Box>
 
           <form className={classes.form} noValidate>
             <TextField
@@ -73,13 +81,25 @@ export default function ForgotPassword() {
               name="fullname"
             />       
 
+<Box mt={1}></Box>
 <Grid item xs={12}>
       <InputLabel htmlFor="select">Gender</InputLabel>
-      <NativeSelect id="select">
+      <NativeSelect id="select" fullWidth>
       <option value="1">Male</option>
       <option value="2">Female</option>
       </NativeSelect>
       </Grid>
+
+      <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="age"
+              label="Age"
+              type="number"
+              id="age"
+            />
      
               <TextField
               variant="outlined"
@@ -110,50 +130,62 @@ export default function ForgotPassword() {
     id="date"
     label="Birthday"
     type="date"
-    //defaultValue="2017-05-24"
     className={classes.textField}
     InputLabelProps={{
       shrink: true,
     }}
   />
+  <Box mt={1}></Box>
 
+  <Typography component="h7" variant="h7"  className={classes.typo}>
 Address
+</Typography>
+
+<Box mt={2}></Box>
 <Grid item xs={12}>
           <TextField
             required
+            variant="outlined"
             id="address1"
             name="address1"
             label="Address line 1"
             fullWidth
             autoComplete="shipping address-line1"
           />
-        </Grid>
-        <Grid item xs={12}>
+           <Box mt={1}></Box>
+        
           <TextField
+          variant="outlined"
             id="address2"
             name="address2"
             label="Address line 2"
             fullWidth
             autoComplete="shipping address-line2"
           />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
+           <Box mt={1}></Box>
+        
+          <TextField 
             required
+            variant="outlined"
             id="city"
             name="city"
             label="City"
             fullWidth
             autoComplete="shipping address-level2"
           />
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <TextField id="state" name="state" label="State/Province/Region" fullWidth />
-        </Grid>
-        <Grid item xs={12} sm={6}>
+           <Box mt={1}></Box>
+       
+          <TextField 
+          variant="outlined"
+          id="state" 
+          name="state"
+          label="State/Province/Region"
+          fullWidth />
+           <Box mt={1}></Box>
+       
           <TextField
             required
+            variant="outlined"
             id="zip"
             name="zip"
             label="Zip / Postal code"
@@ -161,8 +193,11 @@ Address
             autoComplete="shipping postal-code"
           />
         </Grid>
-    
+        <Box mt={3}></Box>
+
+        <Typography component="h7" variant="h7"  className={classes.typo}>
             Have you previously attended our facility?
+            </Typography>
             
               <FormGroup row>
               <FormControlLabel
@@ -179,8 +214,11 @@ Address
             color="primary"
           />
            </FormGroup>
-
+           <Box mt={1}></Box>
+           <Typography component="h7" variant="h7"  className={classes.typo}>
            If yes, state on which condition and when?
+           </Typography>
+
            <TextField
               variant="outlined"
               margin="normal"
@@ -227,6 +265,7 @@ Address
             <Box mt={4}>
               <Copyright />
             </Box>
+            <Box mt={5}></Box>
           </form>
         </div>
   );
