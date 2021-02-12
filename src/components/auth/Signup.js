@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -12,6 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { pink } from '@material-ui/core/colors';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 
 function Copyright() {
   return (
@@ -54,14 +57,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
+const SignUp = ({setAlert}) => {
+
+    const [formData, setFormData] = useState({
+      name:'',
+      email:"",
+      password:"",
+      password2:""
+    })
+
+  const{name,email,password,password2}=formData; 
+
+  const onChange=e=>setFormData(
+    {
+      ...formData, [e.target.name]:e.target.value
+    }
+  )
+  
+  const onSubmit=e=>{
+    e.preventDefault();
+      if (password !== password2) {
+        setAlert('Password do not match' , 'danger');
+          }else{
+            console.log('SUCCESS');
+          }
+        };
+          
+
   const classes = useStyles();
 
   return (
     <Grid container component="main" className={classes.root}>
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
 
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} component={Paper} square>
         <div className={classes.paper}>
 
           <Avatar className={classes.avatar}>
@@ -72,18 +101,21 @@ export default function SignUp() {
             Sign Up
           </Typography>
 
-          <form className={classes.form} noValidate>
+          <form onSubmit = { e=>onSubmit(e)} className={classes.form} noValidate>
             <TextField
+              onChange={e=>onChange(e)}
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              id="fullname"
+              id="name"
               label="Full Name"
-              name="fullname"
+              name="name"
+              value={name}
             />
 
             <TextField
+            onChange={e=>onChange(e)}
               variant="outlined"
               margin="normal"
               required
@@ -92,9 +124,11 @@ export default function SignUp() {
               label="Email"
               type="eamil"
               id="email"
+              value={email}
             />
 
             <TextField
+             onChange={e=>onChange(e)}
               variant="outlined"
               margin="normal"
               required
@@ -103,17 +137,20 @@ export default function SignUp() {
               label="Password"
               type="password"
               id="password"
+              value={password}
             />
 
             <TextField
+            onChange={e=>onChange(e)}
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="confirm"
+              name="password2"
               label="Confirm Password"
               type="password"
-              id="confirm"
+              id="password2"
+              value={password2}
             />
             
             <FormControlLabel
@@ -150,3 +187,10 @@ export default function SignUp() {
     </Grid>
   );
 }
+
+SignUp.propTypes={
+  setAlert:PropTypes.func.isRequired
+};
+
+export default connect(null, { setAlert })(SignUp);
+
