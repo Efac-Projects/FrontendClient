@@ -12,8 +12,6 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 export const mainListItems = (
   <div>
 
-
-
     <ListItem button>
       <ListItemIcon>
         <DashboardIcon />

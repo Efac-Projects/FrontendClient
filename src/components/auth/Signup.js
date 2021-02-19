@@ -12,18 +12,15 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { pink } from '@material-ui/core/colors';
-import axios from 'axios';
-// redux
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import PropTypes from 'prop-types';
-import { register } from '../../actions/auth';
 
 function Copyright() {
   return (
-    <Typography variant='body2' color='textSecondary' align='center'>
+    <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color='primary' href='#'>
+      <Link color="primary" href="Home">
         NoQueue Website
       </Link>{' '}
       {new Date().getFullYear()}
@@ -37,8 +34,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage:
-      'url(https://invention.si.edu/sites/default/files/styles/story_banner_image/public/blog-guest-fox-susannah-2017-03-09-shutterstock_189632216-banner-edit.jpg?itok=eNxGJoO4)',
+    backgroundImage: 'url(https://invention.si.edu/sites/default/files/styles/story_banner_image/public/blog-guest-fox-susannah-2017-03-09-shutterstock_189632216-banner-edit.jpg?itok=eNxGJoO4)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
@@ -61,109 +57,127 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = ({ setAlert, register }) => {
+const SignUp = ({setAlert}) => {
+
+    const [formData, setFormData] = useState({
+      name:'',
+      email:"",
+      password:"",
+      password2:""
+    })
+
+  const{name,email,password,password2}=formData; 
+
+  const onChange=e=>setFormData(
+    {
+      ...formData, [e.target.name]:e.target.value
+    }
+  )
+  
+  const onSubmit=e=>{
+    e.preventDefault();
+    if (name && email && password) {
+      if (password !== password2) {
+        setAlert('Password do not match' , 'danger');
+          }else{
+            console.log('SUCCESS');
+          }}
+          else{
+            setAlert('Please fill all the fileds','warning');
+          }
+        }
+  
+          
+
   const classes = useStyles();
 
-  const [formData, setFormData] = useState({
-    UserName: '',
-    email: '',
-    password: '',
-    ConfirmPassword: '',
-  });
-
-  const { UserName, email, password, ConfirmPassword } = formData;
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    if (password != ConfirmPassword) {
-      setAlert('Password do not match', 'danger');
-    } else {
-      register(UserName, email, password, ConfirmPassword);
-    }
-  };
-
   return (
-    <Grid container component='main' className={classes.root}>
-      <Grid it em xs={false} sm={4} md={7} className={classes.image} />
+    <Grid container component="main" className={classes.root}>
+      <Grid item xs={false} sm={4} md={7} className={classes.image} />
 
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={8} md={5} component={Paper} square>
         <div className={classes.paper}>
+
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-
-          <Typography component='h1' variant='h5'>
+          
+          <Typography component="h1" variant="h5">
             Sign Up
           </Typography>
 
-          <form
-            className={classes.form}
-            className={classes.submit}
-            onSubmit={(e) => onSubmit(e)}
-          >
+          <form onSubmit = { e=>onSubmit(e)} className={classes.form} noValidate>
             <TextField
-              variant='outlined'
-              margin='normal'
+              onChange={e=>onChange(e)}
+              variant="outlined"
+              margin="normal"
+              required
               fullWidth
-              id='fullname'
-              label='Full Name'
-              name='UserName'
-              value={UserName}
-              onChange={(e) => onChange(e)}
+              id="name"
+              label="Full Name"
+              name="name"
+              value={name}
             />
 
             <TextField
-              variant='outlined'
-              margin='normal'
+            onChange={e=>onChange(e)}
+              variant="outlined"
+              margin="normal"
+              required
               fullWidth
-              name='email'
-              label='Email'
-              type='eamil'
-              id='email'
+              name="email"
+              label="Email"
+              type="eamil"
+              id="email"
               value={email}
-              onChange={(e) => onChange(e)}
             />
 
             <TextField
-              variant='outlined'
-              margin='normal'
+             onChange={e=>onChange(e)}
+              variant="outlined"
+              margin="normal"
+              required
               fullWidth
-              name='password'
-              label='Password'
-              type='password'
-              id='password'
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
               value={password}
-              onChange={(e) => onChange(e)}
             />
 
             <TextField
-              variant='outlined'
-              margin='normal'
+            onChange={e=>onChange(e)}
+              variant="outlined"
+              margin="normal"
+              required
               fullWidth
-              name='ConfirmPassword'
-              label='Confirm Password'
-              type='password'
-              id='confirm'
-              value={ConfirmPassword}
-              onChange={(e) => onChange(e)}
+              name="password2"
+              label="Confirm Password"
+              type="password"
+              id="password2"
+              value={password2}
             />
-
+            
             <FormControlLabel
-              control={<Checkbox value='remember' color='primary' />}
-              label='I agree all statements in terms of service'
+              control={<Checkbox value="remember" color="primary" />}
+              label="I agree all statements in terms of service"
             />
 
-            <Button type='submit' fullWidth variant='contained' color='primary'>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
               Sign Up
             </Button>
 
             <Grid container>
               <Grid item>
                 {'Already have an account? '}
-                <Link href='http://localhost:3000/signin' variant='body2'>
-                  {'Login here'}
+                <Link href="signin" variant="body2">
+                  {"Login here"}
                 </Link>
               </Grid>
             </Grid>
@@ -171,16 +185,17 @@ const SignUp = ({ setAlert, register }) => {
             <Box mt={5}>
               <Copyright />
             </Box>
+
           </form>
         </div>
       </Grid>
     </Grid>
   );
+}
+
+SignUp.propTypes={
+  setAlert:PropTypes.func.isRequired
 };
 
-SignUp.prototype = {
-  setAlert: PropTypes.func.isRequired,
-  register: PropTypes.func.isRequired,
-};
+export default connect(null, { setAlert })(SignUp);
 
-export default connect(null, { setAlert, register })(SignUp);
