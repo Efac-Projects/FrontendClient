@@ -80,9 +80,10 @@ export default function Home() {
                         NoQueue facilitates an effective and convenient way to channel your doctor and reach your doctor just on time avoiding unnecessary expoesure to crowds.
                         </p>
                       </div>
-                      <button  className="bg-purple-900 hover:bg-red-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">Our Services
-                      <a href="services" className='text-gray-500'></a>
+                      <a href="services" className='text-gray-500'>
+                      <button  className="bg-purple-900 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" onClick="services" type="submit">Our Services           
                       </button>
+                      </a>
                     </div>
                   </div>
                   
@@ -100,8 +101,10 @@ export default function Home() {
                         NoQueue is an application designed focusing on medical centers to provide an easy-to-use solution to avoid unnecessary overcrowding.
                         </p>
                       </div>
-                      <button  className="bg-pink-600 hover:bg-red-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">About Us
+                      <a href ='about'>
+                      <button  className="bg-pink-600 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">About Us
                       </button>
+                      </a>
                     </div>
                   </div>
     
@@ -118,9 +121,10 @@ export default function Home() {
                           Best doctors with best equipments supply their efficient service to serve you.
                         </p>
                       </div>
-                      <button  className="bg-green-700 hover:bg-red-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">Make Appointment
-                      <a href="appointmentmaking" className='text-gray-500'></a>
+                      <a href="appointmentmaking" className='text-gray-500'>
+                      <button  className="bg-green-700 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">Make Appointment
                       </button>
+                      </a>
                     </div>
                   </div>
                 </div>
