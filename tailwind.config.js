@@ -21,8 +21,12 @@ module.exports = {
   theme: {
     extend: {},
   },
+  transitionDelay: {
+    '0': '0ms',
+    '75': '75ms',
+   },
   variants: {
-    extend: {},
+    extend: {transitionDelay: ['hover', 'focus'],},
   },
   plugins: [],
 }

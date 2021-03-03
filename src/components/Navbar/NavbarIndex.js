@@ -18,7 +18,7 @@ const Navbar = () => {
       <Nav color='primary'>
         <NavLink to='/'>
           {' '}
-          <img src={logo} alt='logo' className='logo' style={{height:'100px'}} />
+          <img src={logo} alt='logo' className='logo' style={{height:'80px'}} />
         </NavLink>
         <Bars />
         <NavMenu>

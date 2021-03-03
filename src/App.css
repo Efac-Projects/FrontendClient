@@ -23,3 +23,23 @@
 .badge2:hover {
   color: cornflowerblue;
 }
+
+.btn-danger,
+.bg-danger,
+.badge-danger,
+.alert-danger {
+  background: rgba(240, 10, 10, 0.904);
+  color: rgb(38, 40, 61);
+  font-family: 'Arial';
+  align-items: center;
+}
+
+.btn-warning,
+.bg-warning,
+.badge-warning,
+.alert-warning {
+  background: rgba(236, 240, 10, 0.904);
+  color: rgb(38, 40, 61);
+  font-family: 'Arial';
+  align-items: center;
+}
