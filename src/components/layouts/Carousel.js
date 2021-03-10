@@ -15,23 +15,22 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const imagepath = [
   {
     imgPath:"https://www.dmn3.com/wp-content/uploads/2018/01/healthcare-marketing-dmn3.jpg",
-    text: "firstjhkjljklk;l;lbmhgmghmhmbnmhmm",
   },
+
   {
     imgPath: 'https://easternalley.com/wp-content/uploads/2019/10/healthcare-trends.jpg',
-    text: "firstjhkjljklk;l;lbmhgmghmhmbnmhmm",
   },
+
   {
     imgPath:'https://i2.wp.com/patondigitalmarketing.com/wp-content/uploads/2019/05/healthcare-digital-marketing-trends.jpg?fit=1254%2C836&ssl=1',
-    text: "firstjhkjljklk;l;lbmhgmghmhmbnmhmm",
   },
+
   {
     imgPath: 'https://assets-global.website-files.com/5eff9c5e4dba181f8aa2d1e0/5f3155b7f273cf36a0a19c1e_Patient-Experience-Blog.jpeg',
-    text: "firstjhkjljklk;l;lbmhgmghmhmbnmhmm",
   },
+
   {
     imgPath:'https://futurehealthcaretoday.com/wp-content/uploads/2017/10/shutterstock_561360403.jpg',
-    text: "firstjhkjljklk;l;lbmhgmghmhmbnmhmm",
   },
 ];
 
@@ -39,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       height: '100vh',
       flexGrow: 1,
+      width: '100%',
     },
    
     img: {
@@ -62,6 +62,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: blue[400],
       color: blue[50],
     },
+    stepper: {
+      backgroundColor:  blue[200],
+    }
   }));
 
 function SwipeableTextMobileStepper() {
@@ -102,21 +105,23 @@ function SwipeableTextMobileStepper() {
               </div>
             ))}
           </AutoPlaySwipeableViews>
-          <MobileStepper
+
+          <MobileStepper className={classes.stepper}
             steps={maxSteps}
+            variant="dots"
+            steps={5}
             position="static"
-            variant="text"
             activeStep={activeStep}
             nextButton={
               <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-                Next
+          
                 {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
               </Button>
             }
             backButton={
               <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
                 {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-                Back
+          
               </Button>
             }
           />
