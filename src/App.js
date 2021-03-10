@@ -34,6 +34,7 @@ const App = () => {
         <Route path='/about' component={About} />
         <Route path='/adminsignin' component={AdminSignin} />
         <Route path='/home' component={Home} />
+        <Route path='/contact' component={Contact} />
       </Switch>
       <Footer/>
     </Router>
