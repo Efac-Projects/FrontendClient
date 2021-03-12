@@ -99,7 +99,7 @@ function SwipeableTextMobileStepper() {
             {imagepath.map((step, index) => (
               <div key={step.label}>
                 {Math.abs(activeStep - index) <= 2 ? (
-                  <img className={classes.img} src={step.imgPath} alt={step.label} alt="text" />
+                  <img className={classes.img} src={step.imgPath} alt={step.label}  />
                 ) : null}
                 <span>{imagepath.text}</span>
               </div>
@@ -107,7 +107,7 @@ function SwipeableTextMobileStepper() {
           </AutoPlaySwipeableViews>
 
           <MobileStepper className={classes.stepper}
-            steps={maxSteps}
+            
             variant="dots"
             steps={5}
             position="static"

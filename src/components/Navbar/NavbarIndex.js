@@ -1,9 +1,9 @@
-import React, {useState,Fragment} from 'react';
+import React, {Fragment} from 'react';
 import './Navbar.css';
 import {connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import {logout} from '../../actions/auth'
-import logo from '../../assests/abc.jpeg';
+import logo from '../../assests/transparent.png';
 
 import {
   Nav,
@@ -26,7 +26,7 @@ const authLinks=(
             src={logo}
             alt='logo'
             className='logo'
-            style={{ height: '80px' }}
+            style={{ height: '100px' }}
           />
         </NavLink>
         <Bars />
@@ -57,7 +57,7 @@ const authLinks=(
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>
         <NavBtn>
-        <a onClick={logout} href='signin'>
+        <a className='red-text ml-5 text-bold btn btn-red' onClick={logout} href='signin'>
           Logout
         </a>
         </NavBtn>

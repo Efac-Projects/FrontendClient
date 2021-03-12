@@ -14,6 +14,7 @@ const initialState = {
   isAuthenticated: null,
   loading: true,
   user: null,
+
 };
 
 export default function (state = initialState, action) {
@@ -44,7 +45,7 @@ export default function (state = initialState, action) {
    ...state,
     isAuthenticated: true,
     loading: false,
-    user: JSON.parse(atob(payload.token.split('.')[1])),
+    user: payload
      };
 
     case AUTH_ERROR:
@@ -58,6 +59,7 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         loading: false,
         user: null,
+       
       };
     default:
       return state;

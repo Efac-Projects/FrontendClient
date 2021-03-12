@@ -25,8 +25,20 @@ import Footer from './components/layouts/AdminDashboard/Footer';
 import BusinessRegister from './components/Pages/BusinessRegister';
 import setAuthToken from './utils/setAuthtoken';
 import Map from './components/layouts/AdminDashboard/maphome/Map';
+import {loadUser} from './actions/auth'
+import CreateProfile from './components/Pages/users/Profile'
+
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
 
 const App = () => {
+
+useEffect(()=>{
+  store.dispatch(loadUser())
+}, []) 
   return (
     <Provider store={store}>
       <Router>
@@ -36,7 +48,7 @@ const App = () => {
           <Route path='/index' exact component={Home} />
           <Route path='/about' component={About} />
           <Route path='/services' component={Services} />
-          <Route path='/appointment' component={Appointment} />
+          <Route path='/appointment' component={CreateProfile} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
           <Private path='/appointmentmaking' component={AppointmentMaking} />

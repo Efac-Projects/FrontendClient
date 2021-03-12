@@ -7,7 +7,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
-import { teal, green, cyan, indigo } from '@material-ui/core/colors';
+import {  indigo } from '@material-ui/core/colors';
 
 const theme = createMuiTheme({
   palette: {
@@ -30,9 +30,6 @@ const rows = [
   createData(4, '3 Mar, 2021', 'Wimal Rodrigo', '22.15', ''),
 ];
 
-function preventDefault(event) {
-  event.preventDefault();
-}
 
 const useStyles = makeStyles((theme) => ({
   seeMore: {
@@ -41,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Appointments() {
-  const classes = useStyles();
+ 
   return (
     <MuiThemeProvider theme={theme}>
       <React.Fragment>

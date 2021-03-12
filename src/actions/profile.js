@@ -1,16 +1,15 @@
 import axios from 'axios'
 import React from 'react'
-import { setAlert } from '../actions/alert';
+import { setAlert } from './alert';
 
 
 import {
  GET_PROFILE,
  PROFILE_ERROR,
- UPDATE_PROFILE,
  CLEAR_PROFILE,
  DELETE_ACCOUNT,
  GET_PROFILES,
-CLEAR_PHOTO
+
 } from './types'
 
 
@@ -19,7 +18,7 @@ CLEAR_PHOTO
 export const  getCurrentProfile=()=>async dispatch=>{
 
 try {
-    const res= await axios.get('https://localhost:5001/api/auth/business')
+    const res= await axios.get('https://localhost:5001/api/auth/profile')
 
     dispatch({
         type:GET_PROFILE,

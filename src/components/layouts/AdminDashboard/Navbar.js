@@ -23,7 +23,7 @@ import { mainListItems } from './lisiItems';
 
 import {MuiThemeProvider , createMuiTheme} from '@material-ui/core'
 import Appointments from './Appointments';
-import { teal, green, cyan, indigo } from '@material-ui/core/colors';
+import { indigo } from '@material-ui/core/colors';
 
 
 const theme =createMuiTheme({
@@ -142,7 +142,7 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
 
   return (
     <MuiThemeProvider theme={theme}>
