@@ -14,7 +14,7 @@ import {
 } from './types';
 
 // register user
-export const register = (UserName, Email, Password, ConfirmPassword) => async (
+export const register = (UserName, Email, Password, ConfirmPassword,PhoneNumber) => async (
   dispatch
 ) => {
   const config = {
@@ -23,7 +23,7 @@ export const register = (UserName, Email, Password, ConfirmPassword) => async (
     },
   };
 
-  const body = JSON.stringify({ UserName, Email, Password, ConfirmPassword });
+  const body = JSON.stringify({ UserName, Email, Password, ConfirmPassword,PhoneNumber });
 
   try {
     const res = await axios.post(

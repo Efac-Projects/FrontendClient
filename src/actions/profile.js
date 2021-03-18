@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React from 'react'
 import { setAlert } from './alert';
-
+import jwt_decode from "jwt-decode";
+import setAuthToken from '../utils/setAuthtoken';
 
 import {
  GET_PROFILE,
@@ -16,9 +17,14 @@ import {
 //gET THE CURRENT USERS PROFILE
 
 export const  getCurrentProfile=()=>async dispatch=>{
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+    var decoded = jwt_decode(localStorage.token);
+   
+}
 
 try {
-    const res= await axios.get('https://localhost:5001/api/auth/profile')
+    const res= await axios.get(`https://localhost:5001/api/auth/user/${decoded.Id}`)
 
     dispatch({
         type:GET_PROFILE,
@@ -26,7 +32,8 @@ try {
     })
 } catch (err) {
     dispatch({
-        type:PROFILE_ERROR,
+       
+      type:GET_PROFILE,
         payload:{msg:err.response.statusText,status:err.response.status}
     })
 }
@@ -90,7 +97,7 @@ export const createProfile = (
         'Content-Type':'application/json'
       }
     }
-    const res = await axios.post('/api/profile', formData,config);
+    const res = await axios.post('https://localhost:5001/api/auth/register', formData,config);
 
     dispatch({
       type: GET_PROFILE,

@@ -29,12 +29,14 @@ import {loadUser} from './actions/auth'
 import CreateProfile from './components/Pages/users/Profile'
 
 
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
+
 
 
 const App = () => {
+
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
 
 useEffect(()=>{
   store.dispatch(loadUser())

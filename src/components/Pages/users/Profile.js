@@ -1,12 +1,12 @@
-import React, { useState, Fragment } from 'react';
-
+import React, { useState, Fragment,useEffect } from 'react';
+import {Link, withRouter} from 'react-router-dom'
 // redux
 import { connect } from 'react-redux';
 import { setAlert } from '../../../actions/alert';
 import PropTypes from 'prop-types';
+import {createProfile,getCurrentProfile} from '../../../actions/profile'
 
-
-const CreateProfile = ({ setAlert }) => {
+const CreateProfile = ({user:{user,loading}, createProfile,setAlert,history,getCurrentProfile, isAuthenticated }) => {
   
 
   const [formData, setFormData] = useState({
@@ -15,16 +15,32 @@ const CreateProfile = ({ setAlert }) => {
     PhoneNumber: ''
   });
 
+
+  useEffect(() => {
+    if (!user) getCurrentProfile();
+    if (!loading && user) {
+      const userData = { ...formData };
+      for (const key in user) {
+        if (key in userData) userData[key] = user[key];
+      }
+      setFormData(userData);
+    }
+      // eslint-disable-next-line
+  }, [loading,getCurrentProfile,user])
+
   const {
 UserName,
 Email,
 PhoneNumber } = formData;
 
 
-  const onChange = (e) =>
+  const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  
+const onSubmit=e=>{
+  e.preventDefault()
+  createProfile(formData,history)
+}
   return (
     <Fragment>
       <div className='w-full bg-white rounded  p-8 m-4 '>
@@ -35,7 +51,7 @@ PhoneNumber } = formData;
         <form
           className='mb-6 mx-3'
           //className={classes.submit}
-         
+         onSubmit={e=>onSubmit(e)}
         >
           <p className='text-red-500 text-xs italic mb-2'>
             **Please fill out all the fields.
@@ -77,9 +93,10 @@ PhoneNumber } = formData;
               <input
                 className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='grid-location'
-                type='number'
+                type='tel'
                 name='PhoneNumber'
                 value={PhoneNumber}
+                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 onChange={(e) => onChange(e)}
                 placeholder='phone'
               />
@@ -128,7 +145,15 @@ PhoneNumber } = formData;
 
 CreateProfile.prototype = {
   setAlert: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
+  getCurrentProfile:PropTypes.func.isRequired,
+  isAuthenticated:PropTypes.bool,
  
 };
 
-export default connect(null, { setAlert })(CreateProfile);
+const mapStateToProps=state=>({
+  user: state.auth.user,
+  isAuthenticated:state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps, { setAlert,createProfile,getCurrentProfile})(withRouter(CreateProfile));

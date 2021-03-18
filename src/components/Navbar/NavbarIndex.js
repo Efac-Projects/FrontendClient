@@ -88,9 +88,7 @@ const guestLinks=(
           <NavLink to='/about' activeStyle>
             About
           </NavLink>
-          <NavLink to='/signin' activeStyle>
-            Appointment
-          </NavLink>
+         
           <NavLink to='/map' activeStyle>
             Map
           </NavLink>

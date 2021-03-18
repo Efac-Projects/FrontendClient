@@ -7,6 +7,8 @@ import {
   AUTH_ERROR,
   LOGOUT,
   DELETE_ACCOUNT,
+  PROFILE_ERROR,
+  GET_PROFILE
 } from '../actions/types';
 
 const initialState = {
@@ -41,6 +43,7 @@ export default function (state = initialState, action) {
       };
 
     case USER_LOADED:
+    case GET_PROFILE:
      return {
    ...state,
     isAuthenticated: true,
@@ -48,10 +51,14 @@ export default function (state = initialState, action) {
     user: payload
      };
 
+
+
+     
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
     case DELETE_ACCOUNT:
+   
       localStorage.removeItem('token');
       return {
         ...state,
