@@ -44,10 +44,8 @@ try {
 //Get all profile
 
 export const  getProfiles=()=>async dispatch=>{
- 
   try {
-      const res= await axios.get('/api/profile')
-  
+      const res= await axios.get('https://localhost:5001/api/business')
       dispatch({
           type:GET_PROFILES,
           payload:res.data
@@ -58,23 +56,16 @@ export const  getProfiles=()=>async dispatch=>{
           payload:{msg:err.response.statusText,status:err.response.status}
       })
   }
-  
   }
 
 
 //Get  profile by id
 
-export const  getProfilebyID=()=>async dispatch=>{
-
-  if (localStorage.token) {
-    setAuthToken(localStorage.token);
-    var decoded = jwt_decode(localStorage.token);  
-    console.log(decoded.Email)
-}
+export const  getProfilebyID=(email)=>async dispatch=>{
 
 
   try {
-      const res= await axios.get(`https://localhost:5000/api/business/email/${decoded.Email}`)
+      const res= await axios.get(`https://localhost:5001/api/business/email/${email}`)
   
       dispatch({
           type:GET_PROFILE,

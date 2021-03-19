@@ -59,7 +59,7 @@ const App = () => {
           <Route path='/admin' component={Dashboard} />
           <Route path='/contactus' component={Contact} />
           <Private path='/business' component={BusinessRegister} />
-          <Route path='/businessproffile' component={Proffile} />
+          <Route exact path='/businessproffile/:email' component={Proffile} />
           <Route path='/map' component={Map} />
         </Switch>
         <Footer />
