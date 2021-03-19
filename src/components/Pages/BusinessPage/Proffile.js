@@ -1,4 +1,3 @@
-
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -15,3 +14,4 @@ Proffile.propTypes = {
 }
 
 export default Proffile
+
