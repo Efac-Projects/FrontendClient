@@ -1,33 +1,26 @@
 import React, { useState, Fragment } from 'react';
-import axios from 'axios';
-
-import PropTypes from 'prop-types';
-
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {createProfile} from '../../../actions/businessprofile'
+import {withRouter} from 'react-router-dom'
 const defaultImageSrc = '/img/image_placeholder.png';
-
-const initialFieldValues = {
-  BusinessType: '',
-  BusinessName: '',
-  TotalCrowd: '',
-  CurrentCrowd: '',
-  PostalCode: '',
-  PhoneNumber: '',
-  Email: '',
-  Summary: '',
-  ImageName: '',
-  ImageSrc: defaultImageSrc,
-  ImageFile: null,
-};
-
-const CreateProfile = () => {
-  // state goes here
-
-  const [values, setValues] = useState(initialFieldValues);
-  const [errors, setErrors] = useState({});
-
+const CreateProfile = ({profile:{profile,loading},createProfile,history}) => {
+  const [formData,setFormData] = useState({
+    BusinessType: '',
+    Name: '',
+    TotalCrowd: '',
+    CurrentCrowd: '',
+    PostalCode: '',
+    PhoneNumber: '',
+    Email: '',
+    Summary: '',
+   // ImageName: '',
+    //ImageSrc: defaultImageSrc,
+    //ImageFile: null,
+  });
   const {
     BusinessType,
-    BusinessName,
+    Name,
     TotalCrowd,
     CurrentCrowd,
     PostalCode,
@@ -37,36 +30,29 @@ const CreateProfile = () => {
     ImageName,
     ImageSrc,
     ImageFile,
-  } = values;
-
-  const onChange = (e) =>
-    setValues({ ...values, [e.target.name]: e.target.value });
-
-  // check validation errors
-  const validate = () => {
-    // let temp = {};
-    // temp.BusinessName = values.Business == '' ? false : true;
-    // setErrors(temp);
-    // return Object.values(temp).every((x) => x == true);
-    return true;
-  };
-
-  // show preview image
+  } = formData;
+  const onChange =e =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+const onSubmit=(e)=>{
+  e.preventDefault()
+  createProfile(formData,history)
+}
+ /* // show preview image
   const showPreview = (e) => {
     if (e.target.files && e.target.files[0]) {
       let imageFile = e.target.files[0];
       const reader = new FileReader();
       reader.onload = (x) => {
-        setValues({
-          ...values,
+        setFormData({
+          ...formData,
           ImageFile: imageFile,
           ImageSrc: x.target.result,
         });
       };
       reader.readAsDataURL(imageFile);
     } else {
-      setValues({
-        ...values,
+      setFormData({
+        ...formData,
         ImageFile: null,
         ImageSrc: defaultImageSrc,
       });
@@ -74,68 +60,24 @@ const CreateProfile = () => {
   };
   //reset Form
   const resetForm = () => {
-    setValues(initialFieldValues);
+    setFormData(formData);
     document.getElementById('image-uploader').value = null;
     //setErrors({});
-  };
-
-  // form submit
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      const formData = new FormData();
-      formData.append('BusinessType', values.BusinessType);
-      formData.append('BusinessName', values.BusinessName);
-      formData.append('TotalCrowd', values.TotalCrowd);
-      formData.append('CurrentCrowd', values.CurrentCrowd);
-      formData.append('PostalCode', values.PostalCode);
-      formData.append('PhoneNumber', values.PhoneNumber);
-      formData.append('Email', values.Email);
-      formData.append('Summary', values.Summary);
-      formData.append('ImageName', values.ImageName);
-      formData.append('ImageFile', values.ImageFile);
-      addOrEdit(formData, resetForm);
-    }
-  };
-
-  // apply error class
-  const applyErrorClass = (field) =>
-    field in errors && errors[field] == false ? ' invalid-field' : '';
-
-  const addOrEdit = (formData, onSuccess) => {
-    employeeAPI()
-      .create(formData)
-      .then((res) => {
-        onSuccess();
-      })
-      .catch((err) => console.log(err));
-  };
-  //API
-  const employeeAPI = (url = 'https://localhost:5001/api/business') => {
-    return {
-      fetchAll: () => axios.get(url),
-      //create: (newRecord) => axios.post(url, newRecord),
-      //update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
-      //delete: id => axios.delete(url + id)
-    };
-  };
-
+  };*/
   return (
     <Fragment>
       <div className='w-full bg-white rounded  p-8 m-4 '>
         <h1 className='text-2xl xl:text-2xl font-extrabold text-orange-500 text-center '>
           Create Your Profile
         </h1>
-
         <form
           className='mb-6 mx-3'
           //className={classes.submit}
-          onSubmit={handleFormSubmit}
+          onSubmit={e=>onSubmit(e)}
         >
           <p className='text-red-500 text-xs italic mb-2'>
             **Please fill out all the fields.
           </p>
-
           <div className='w-full  mb-6 md:mb-0'>
             <label
               className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
@@ -167,7 +109,6 @@ const CreateProfile = () => {
               </div>
             </div>
           </div>
-
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full '>
               <label
@@ -179,15 +120,14 @@ const CreateProfile = () => {
               <input
                 className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='BusinessName'
-                name='BusinessName'
-                value={BusinessName}
+                name='Name'
+                value={Name}
                 type='text'
                 placeholder='Business Name'
                 onChange={(e) => onChange(e)}
               />
             </div>
           </div>
-
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
@@ -207,7 +147,6 @@ const CreateProfile = () => {
               />
             </div>
           </div>
-
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
@@ -227,7 +166,6 @@ const CreateProfile = () => {
               />
             </div>
           </div>
-
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
@@ -250,7 +188,6 @@ const CreateProfile = () => {
               </p>
             </div>
           </div>
-
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
@@ -274,7 +211,6 @@ const CreateProfile = () => {
               </p>
             </div>
           </div>
-
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
@@ -297,7 +233,6 @@ const CreateProfile = () => {
               </p>
             </div>
           </div>
-
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
@@ -320,27 +255,6 @@ const CreateProfile = () => {
               </p>
             </div>
           </div>
-
-          <div className='flex flex-wrap -mx-3 mb-6'>
-            <div className='w-full'>
-              <div class='bg-white rounded shadow border p-6 w-64'>
-                <img src={values.ImageSrc} />
-                <div>
-                  <input
-                    type='file'
-                    accept='image/*'
-                    onChange={showPreview}
-                    id='image-uploader'
-                  />
-                </div>
-              </div>
-
-              <p className='text-gray-600 text-xs italic'>
-                Upload your business card image
-              </p>
-            </div>
-          </div>
-
           <button
             type='submit'
             className='mt-5 w-1/2  font-semibold bg-red-700 text-gray-100 w-full py-4 rounded-sm hover:bg-red-500 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none'
@@ -353,5 +267,10 @@ const CreateProfile = () => {
     </Fragment>
   );
 };
-
-export default CreateProfile;
+CreateProfile.propTypes = {
+  createProfile:PropTypes.func.isRequired,
+}
+const mapStateToProps=state=>({
+  profile:state.profile
+  })
+    export default connect(mapStateToProps,{createProfile}) (withRouter(CreateProfile))

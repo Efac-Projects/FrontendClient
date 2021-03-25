@@ -13,7 +13,8 @@ name:'',
 email:'',
 totalCrowd:'',
 currentCrowd:'',
-phoneNumber:''
+phoneNumber:'',
+summary:''
 
     })
 

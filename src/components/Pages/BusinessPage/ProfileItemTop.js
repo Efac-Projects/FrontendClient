@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
+import Box from '@material-ui/core/Box'
 
 const useStyles = makeStyles((theme) => ({
     icon: {
@@ -23,7 +24,7 @@ export default function ProfileItemTop() {
 
     return (
         <div>
-          
+         <Box mt={5}></Box>
         <Typography
                   component='h1'
                   variant='h2'
@@ -40,25 +41,26 @@ export default function ProfileItemTop() {
                   color='textSecondary'
                   paragraph
                 >
-                  Best way to connect with your Family Doctor. <br /> No more
-                  waiting Queus.
+                  Best way to connect with your Doctor. <br /> No more
+                  waiting Queues.
                 </Typography>
                 <div className={classes.heroButtons}>
                   <Grid container spacing={2} justify='center'>
                     <Grid item>
                       <Button
-                        variant='contained'
-                        color='primary'
-                        onClick={''}
+                      variant='contained'
+                      color='primary'
+                      href="map"
                       >
-                        Find Location
+                      Find Location     
                       </Button>
+
                     </Grid>
                     <Grid item>
                       <Button
                         variant='outlined'
                         color='primary'
-                        onClick={''}
+                        href="contactus"
                       >
                         Contact Us
                       </Button> </Grid></Grid></div>

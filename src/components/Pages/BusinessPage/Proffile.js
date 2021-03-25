@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import Spinner from '../../layouts/Spinner'
 import ProfileTop from './ProfileTop'
 import { getProfilebyID,getCurrentProfile} from '../../../actions/businessprofile'
-
+import Grid from '@material-ui/core/Grid';
 
 const Profile = ({ match,getProfilebyID,user,auth,profile:{ profile, loading}}) => {
 
@@ -23,8 +23,9 @@ useEffect(()=>{
 {profile === null || loading ? <Spinner/>:<Fragment>
   <div><Link to='/appointment' className="bg-green-500 hover:bg-blue-800 text-xs text-white font-bold py-1 px-4 rounded">
   Back to Businesses</Link>
-  
 
+
+ 
 </div>
   <div class="profile-grid my-1">
     <ProfileTop profile={profile}/>

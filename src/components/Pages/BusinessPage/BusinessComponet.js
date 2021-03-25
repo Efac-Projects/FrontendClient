@@ -16,6 +16,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {getProfiles} from '../../../actions/businessprofile'
 import ProfileItem from './ProfileItem'
+import ProfileItemTop from './ProfileItemTop';
 
 
 
@@ -31,7 +32,7 @@ import ProfileItem from './ProfileItem'
       <Fragment>
  {loading ? <h4>Loading...</h4>:
  <Fragment>
-   <h1 className='large'> </h1>
+   <ProfileItemTop/> 
    </Fragment>}
    <div className='card' >
         {profiles.length>0 ?(

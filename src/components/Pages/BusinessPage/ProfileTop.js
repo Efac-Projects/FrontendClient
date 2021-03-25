@@ -6,7 +6,7 @@ import {withRouter, Link} from 'react-router-dom'
 import AppointmentMaking from '../UserPages/AppointmentMaking'
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-
+import img from '../../../assests/NewLanka.jpg';
 
 
 
@@ -20,6 +20,7 @@ const ProfileTop =({createAppointments,history,profile: {
     businessId,
     summary,
     imageName,
+   
   
 }}) => {
 
@@ -48,6 +49,8 @@ const onChange=e=>setFormData({...formData,[e.target.name]:e.target.value})
 
     return (
       <Fragment>
+        <Link to={`/treatment/1`} className="bg-green-500 hover:bg-blue-800 text-xs text-white font-bold py-1 px-4 rounded">
+          Find Your Doctor</Link>
 <div className='container-around'>
         <section className="relative py-20">
         <div
@@ -60,7 +63,8 @@ const onChange=e=>setFormData({...formData,[e.target.name]:e.target.value})
         <div className=" mx-auto px-4">
           <div className="items-center flex flex-wrap">
             <div className="w-full md:w-4/12 ml-auto mr-auto px-4">
-              
+              <img
+              src={img}/>
                 {imageName}
             
             </div>
