@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection:'column',
       alignItems: 'center',
-      backgroundColor: green.A100,
+ 
     },
     form: {
         width: '50%',

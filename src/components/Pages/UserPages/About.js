@@ -21,15 +21,13 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-  },
+ 
   image: {
     backgroundImage: 'url(https://image.shutterstock.com/image-photo/doctor-writing-on-medical-health-260nw-578137630.jpg)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
-    height: '63vh',
+    height: '60vh',
     position:'relative',
     fontFamily:'Arial',
     fontSize:'3rem',

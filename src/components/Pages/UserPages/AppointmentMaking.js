@@ -66,7 +66,7 @@ const AppointmentMaking = ({setAlert
     }, [loading,getProfilebyID,profile])
 
 
-const{firstname,lastname,businessId,age,phonenumber,treatmentId,gender}=formData; 
+const{firstname,lastname,businessId,age,phonenumber,treatmentId,gender,date}=formData; 
 
 const onChange=e=>setFormData(
   {
@@ -76,7 +76,7 @@ const onChange=e=>setFormData(
 
 const onSubmit=e=>{
   e.preventDefault();
-  if (firstname && lastname && businessId && treatmentId && phonenumber ) {
+  if (firstname && lastname && businessId && treatmentId && phonenumber && date ) {
 
     e.preventDefault()
     createAppointments(formData,history)
@@ -170,6 +170,25 @@ const onSubmit=e=>{
             </div>
           </div>
 
+          <div className='flex flex-wrap -mx-3 mb-6'>
+            <div className='w-full '>
+              <label
+                className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+                htmlFor='bname'
+              >
+             Date
+              </label>
+              <input
+                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                id='date'
+                name='date'
+                value={date}
+                type='date'
+                placeholder='Date'
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+          </div>
 
          
 

@@ -7,6 +7,7 @@ import appointment from './appointment'
 import treatment from './treatment'
 import contact from './contact'
 import confirm from './confirm'
+import count from './count'
 
 export default combineReducers({
   alert,
@@ -16,5 +17,6 @@ export default combineReducers({
   appointment,
   treatment,
   contact,
-  confirm
+  confirm,
+  count
 });

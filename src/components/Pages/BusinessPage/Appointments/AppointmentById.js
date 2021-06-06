@@ -15,7 +15,7 @@ import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      height: '100vh',
+      height: '125vh',
     },
     paper: {
       margin: theme.spacing(0,0),
@@ -49,7 +49,12 @@ useEffect(()=>{
 const classes = useStyles();
     return( 
      
-        <div className={classes.paper}>
+        <div   style={{
+          display: 'flex',
+        
+         
+          height: '90vh',
+        }} className={classes.paper}>
           
           <Box mt={5}></Box>
           <Typography component="h1" variant="h5">

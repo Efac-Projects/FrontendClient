@@ -1,3 +1,4 @@
+
 import React, { useState,useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -115,7 +116,7 @@ const onSubmit=e=>{
                 Phone Number
               </label>
       <input
-                className='appearance-none block w-full bg-lightblue-50 text-gray-50 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                className='appearance-none block w-full bg-lightblue-50 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='grid-location'
                 type='text'
                 name='phone'
@@ -132,7 +133,7 @@ const onSubmit=e=>{
           required
           fullWidth
           name='message'
-          label='Message for our team'
+          label='Confirm Message'
           type='message'
           id='message'
           multiline
@@ -175,4 +176,3 @@ const mapStateToProps=state=>({
   })
 
 export default connect(mapStateToProps, { setAlert,createConfirm,getAppointmentbyID })(ConfirmAppointment);
-

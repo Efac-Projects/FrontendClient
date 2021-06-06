@@ -6,10 +6,12 @@ import { blue } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-
-import Carousel from '../layouts/Carousel';
+import { ThemeProvider } from '@material-ui/styles';
+import Carousel from '../layouts/carousel/Components/Carousel';
 import img from '../../assests/logo.png';
 import imge from '../../assests/images.jpg';
+import { createMuiTheme } from '@material-ui/core/styles';
+
 
 function Copyright() {
     return (
@@ -24,6 +26,11 @@ function Copyright() {
     );
   }
 
+  const theme = createMuiTheme({
+    palette: {
+      primary: blue,
+    },
+  });
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '60%',
     height: '100%',
-    marginTop: theme.spacing(0),
+    
     backgroundColor: blue[500],
     color: blue[50],
   },
@@ -53,10 +60,14 @@ const Home=()=> {
   return (
     
       <Grid item xs={12} component={Paper} square>
-        <div className={classes.paper}>
+      
           <Carousel/>
-        <Box mt={10}></Box>
 
+          <ThemeProvider theme={theme}>
+        <Box color=' primary'  mt={2}></Box>
+
+        </ThemeProvider>
+        <div className={classes.paper}>
         <section className="pb-20 bg-blue-200 ">
               <div className=" mx-auto px-4">
                 <div className="flex flex-wrap">
@@ -67,9 +78,9 @@ const Home=()=> {
                         <i class="fa fa-heartbeat" aria-hidden="true"></i>
                         </div>
                         <h6 className="text-xl font-semibold">Your Health is Our Priority</h6>
-                        <p className="mt-2 mb-4 text-grey-900">
+                        <h6 className="mt-2 mb-4 text-grey-900">
                         NoQueue facilitates an effective and convenient way to channel your doctor and reach your doctor just on time avoiding unnecessary expoesure to crowds.
-                        </p>
+                        </h6>
                       </div>
                       <a href="services" className='text-gray-500'>
                       <button  className="bg-purple-900 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" onClick="services" type="submit">Our Services           
@@ -88,9 +99,9 @@ const Home=()=> {
                         <h6 className="text-xl font-semibold">
                           Welcome to Our Service
                         </h6>
-                        <p className="mt-2 mb-4 text-gray-900">
+                        <h6 className="mt-2 mb-4 text-gray-900">
                         NoQueue is an application designed focusing on medical centers to provide an easy-to-use solution to avoid unnecessary overcrowding.
-                        </p>
+                        </h6>
                       </div>
                       <a href ='about'>
                       <button  className="bg-pink-600 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">About Us
@@ -108,9 +119,9 @@ const Home=()=> {
                         <h6 className="text-xl font-semibold">
                           Best Doctors and Equipments
                         </h6>
-                        <p className="mt-2 mb-4 text-gray-900">
+                        <h6 className="mt-2 mb-4 text-gray-900">
                           Best doctors with best equipments supply their efficient service to serve you. Make your appointment at the nearest location where you can reach easily.
-                        </p>
+                        </h6>
                       </div>
                       <a href="/appointment" className='text-gray-500'>
                       <button  className="bg-green-700 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">Make Appointment
@@ -151,7 +162,7 @@ const Home=()=> {
                       alt="..."
                       className="max-w-full col-6 rounded-lg mx-auto bg-white"
                       src={img}
-                      style={{ maxWidth: "600px" }}
+                      style={{ Width: "400px" }}
                     />
                   </div>
                   <div className="w-full md:w-5/12 ml-auto mr-auto px-4">

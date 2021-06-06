@@ -39,7 +39,16 @@ const Appointments = ({getProfiles,auth,profile:{profiles,loading}}) => {
 
     return (
 
-        <div className={classes.paper}>
+        <div
+        
+        style={{
+          display: 'flex',
+        
+         
+          height: '90vh',
+        }}
+        
+        className={classes.paper}>
           
         <Box mt={5}></Box>
         <Typography component="h1" variant="h5">

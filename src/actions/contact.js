@@ -6,7 +6,8 @@ import { setAlert } from './alert';
 import {
 GET_CONTACT,
 CRAETE_CONTACT,
-CONTACT_ERROR
+CONTACT_ERROR,
+DELETE_CONTACT
 } from './types'
 
 
@@ -37,6 +38,29 @@ export const  getContacts=()=>async dispatch=>{
 
 
 //Delete contact
+
+export const deleteContact=(contactId,history)=>async dispatch=>{
+  try {
+    const res=await axios.delete(`https://localhost:5001/api/contactus/${contactId}`)
+
+    dispatch({
+      type:DELETE_CONTACT,
+      payload:res.data
+
+    })
+
+    dispatch(setAlert('Message Removed','success'));
+   
+
+  } catch (err) {
+    dispatch({
+      type:CONTACT_ERROR,
+      payload:{ msg: err.response.statusText, status: err.response.status}
+    })
+  }
+}
+
+
 
 
 

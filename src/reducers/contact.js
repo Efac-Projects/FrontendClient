@@ -1,4 +1,4 @@
-import { CONTACT_ERROR,CRAETE_CONTACT, GET_CONTACT} from "../actions/types"
+import { CONTACT_ERROR,CRAETE_CONTACT, GET_CONTACT, DELETE_CONTACT} from "../actions/types"
 
 const initalState={
    contact:null,
@@ -34,6 +34,14 @@ export default function (state=initalState,action){
             
             };
        
+
+        case DELETE_CONTACT:
+            return{
+
+                ...state,
+                  contact:null,
+                   loading:false
+            }
 
         default:
             return state;

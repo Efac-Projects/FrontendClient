@@ -9,12 +9,12 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { blue } from '@material-ui/core/colors';
-
+import image1 from '../Images/aboutus.jpg'
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const imagepath = [
   {
-    imgPath:"https://www.dmn3.com/wp-content/uploads/2018/01/healthcare-marketing-dmn3.jpg",
+    imgPath:image1,
   },
 
   {
@@ -36,13 +36,13 @@ const imagepath = [
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      height: '100vh',
+    
       flexGrow: 1,
       width: '100%',
     },
    
     img: {
-      height: '100vh',
+      height:'65vh',
       display: 'block',
       maxWidth: 'Fullscreen',
       overflow: 'hidden',
