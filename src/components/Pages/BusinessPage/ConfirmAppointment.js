@@ -115,7 +115,7 @@ const onSubmit=e=>{
                 Phone Number
               </label>
       <input
-                className='appearance-none block w-full bg-lightblue-50 text-gray-50 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                className='appearance-none block w-full bg-lightblue-50 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='grid-location'
                 type='text'
                 name='phone'

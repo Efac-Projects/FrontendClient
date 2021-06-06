@@ -213,11 +213,11 @@ const onSubmit=e=>{
                 value={availability}
                 onChange={(e) => onChange(e)}
               >
-               <option value='daily'>Daily</option>
-      <option value='weekdays'>Weekdays</option>
-      <option value='weekends'>Weekends</option>
-      <option value='weekly'>Weekly</option>
-      <option value='monthly' >Monthly</option>
+      <option value='Daily'>Daily</option>
+      <option value='Weekdays'>Weekdays</option>
+      <option value='Weekends'>Weekends</option>
+      <option value='Weekly'>Weekly</option>
+      <option value='Monthly'>Monthly</option>
               </select>
               <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
                 <svg
@@ -249,13 +249,13 @@ const onSubmit=e=>{
                 onChange={(e) => onChange(e)}
               >
            <option value='none'></option>
-      <option value='sunday'>Sunday</option>
-      <option value='monday'>Monday</option>
-      <option value='tuesday'>Tuesday</option>
-      <option value='wednesday'>Wednesday</option>
-      <option value='thursday'>Thursday</option>
-      <option value='friday'>Friday</option>
-      <option value='saturday'>Saturday</option>
+      <option value='Sunday'>Sunday</option>
+      <option value='Monday'>Monday</option>
+      <option value='Tuesday'>Tuesday</option>
+      <option value='Wednesday'>Wednesday</option>
+      <option value='Thursday'>Thursday</option>
+      <option value='Friday'>Friday</option>
+      <option value='Saturday'>Saturday</option>
               </select>
               <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
                 <svg
@@ -272,15 +272,15 @@ const onSubmit=e=>{
 
       <Box mt={2}></Box>
       <InputLabel htmlFor="select" value={date} onChange={e=>onChange(e)}>If monthly, choose the date</InputLabel>
+
 <TextField
  onChange={e=>onChange(e)}
     variant="outlined"
     margin="normal"
-    
     fullWidth
     id="date"
     label="Available Date"
-
+    defaultValue="null"
     type="date"
     name="date"
     value={date}
@@ -289,7 +289,7 @@ const onSubmit=e=>{
       shrink: true,
     }}
   />
-
+  
 <Box mt={2}></Box>
 <Typography component="h7" variant="h8"  className={classes.typo}>
 Available Time

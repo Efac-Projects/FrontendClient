@@ -113,7 +113,7 @@ user.userRole ==='Admin'
   
 
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid container component="main">
      
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
 

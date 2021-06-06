@@ -101,7 +101,7 @@ if(UserName && email && password && ConfirmPassword){
     return <Redirect to="/index"/>
   }
   return (
-    <Grid container component="main" className={classes.root}>
+    <Grid container component="main">
       <Grid it em xs={false} sm={4} md={7} className={classes.image} />
 
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>

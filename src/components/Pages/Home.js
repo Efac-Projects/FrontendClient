@@ -9,7 +9,10 @@ import Link from '@material-ui/core/Link';
 
 import Carousel from '../layouts/Carousel';
 import img from '../../assests/logo.png';
-import imge from '../../assests/images.jpg';
+import imge1 from '../../assests/Av1.jpg';
+import imge2 from '../../assests/Av2.jpg';
+import imge3 from '../../assests/Av3.jpg';
+import imge4 from '../../assests/Av4.jpg';
 
 function Copyright() {
     return (
@@ -55,7 +58,7 @@ const Home=()=> {
       <Grid item xs={12} component={Paper} square>
         <div className={classes.paper}>
           <Carousel/>
-        <Box mt={10}></Box>
+        <Box mt={8}></Box>
 
         <section className="pb-20 bg-blue-200 ">
               <div className=" mx-auto px-4">
@@ -67,9 +70,9 @@ const Home=()=> {
                         <i class="fa fa-heartbeat" aria-hidden="true"></i>
                         </div>
                         <h6 className="text-xl font-semibold">Your Health is Our Priority</h6>
-                        <p className="mt-2 mb-4 text-grey-900">
+                        <h6 className="mt-2 mb-4 text-grey-900">
                         NoQueue facilitates an effective and convenient way to channel your doctor and reach your doctor just on time avoiding unnecessary expoesure to crowds.
-                        </p>
+                        </h6>
                       </div>
                       <a href="services" className='text-gray-500'>
                       <button  className="bg-purple-900 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" onClick="services" type="submit">Our Services           
@@ -88,9 +91,9 @@ const Home=()=> {
                         <h6 className="text-xl font-semibold">
                           Welcome to Our Service
                         </h6>
-                        <p className="mt-2 mb-4 text-gray-900">
+                        <h6 className="mt-2 mb-4 text-gray-900">
                         NoQueue is an application designed focusing on medical centers to provide an easy-to-use solution to avoid unnecessary overcrowding.
-                        </p>
+                        </h6>
                       </div>
                       <a href ='about'>
                       <button  className="bg-pink-600 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">About Us
@@ -108,9 +111,9 @@ const Home=()=> {
                         <h6 className="text-xl font-semibold">
                           Best Doctors and Equipments
                         </h6>
-                        <p className="mt-2 mb-4 text-gray-900">
+                        <h6 className="mt-2 mb-4 text-gray-900">
                           Best doctors with best equipments supply their efficient service to serve you. Make your appointment at the nearest location where you can reach easily.
-                        </p>
+                        </h6>
                       </div>
                       <a href="/appointment" className='text-gray-500'>
                       <button  className="bg-green-700 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">Make Appointment
@@ -151,7 +154,7 @@ const Home=()=> {
                       alt="..."
                       className="max-w-full col-6 rounded-lg mx-auto bg-white"
                       src={img}
-                      style={{ maxWidth: "600px" }}
+                      style={{ Width: "400px" }}
                     />
                   </div>
                   <div className="w-full md:w-5/12 ml-auto mr-auto px-4">
@@ -242,7 +245,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge1}
                         className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />
@@ -275,7 +278,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge2}
                         className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />
@@ -307,7 +310,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge3}
                        className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />
@@ -339,7 +342,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge4}
                         className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />

@@ -69,7 +69,7 @@ return(
               color="textPrimary"
             >
              <Typography>&nbsp;&nbsp;&nbsp;&nbsp;Specialized Area: {specification}</Typography>
-             <Typography>&nbsp;&nbsp;&nbsp;&nbsp;Treatment ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{treatmentId}</Typography>
+             <Typography>&nbsp;&nbsp;&nbsp;&nbsp;Treatment ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {treatmentId}</Typography>
              <Typography>&nbsp;&nbsp;&nbsp;&nbsp;Availability&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {availability}</Typography>
              <Typography>&nbsp;&nbsp;&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {date}</Typography>
              <Typography>&nbsp;&nbsp;&nbsp;&nbsp;Day&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {day}</Typography>

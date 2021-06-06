@@ -254,8 +254,8 @@ const onSubmit=e=>{
                 onChange={(e) => onChange(e)}
               >
               
-                <option value='male'>Male</option>
-                <option value='female'>Female</option>
+                <option value='Male'>Male</option>
+                <option value='Female'>Female</option>
               </select>
               <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
                 <svg

@@ -116,7 +116,7 @@ export const editProfile = (
 
     dispatch({
       type: PROFILE_ERROR,
-      payload: "somthing went wrong"
+      payload: "something went wrong"
     });
   }
 };
