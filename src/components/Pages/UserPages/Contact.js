@@ -55,9 +55,10 @@ const Contact = ({setAlert,createContact,history}) => {
     fullname:'',
     email:"",
     message:"",
+    phonenumber:"",
   })
 
-const{fullname,email,message}=formData; 
+const{fullname,email,message,phonenumber}=formData; 
 
 const onChange=e=>setFormData(
   {
@@ -67,7 +68,7 @@ const onChange=e=>setFormData(
 
 const onSubmit=e=>{
   e.preventDefault();
-  if (fullname && email && message) {
+  if (fullname && email && message && phonenumber) {
     e.preventDefault()
     createContact(formData,history)}
         else{
@@ -112,9 +113,22 @@ const onSubmit=e=>{
           fullWidth
           name='email'
           label='Email Address'
-          type='email'
+          type='text'
           id='email'
           value={email}
+        />
+
+<TextField
+        onChange={e=>onChange(e)}
+          variant='outlined'
+          margin='normal'
+          required
+          fullWidth
+          name='phonenumber'
+          label='Mobile Number'
+          type='text'
+          id='phonenumber'
+          value={phonenumber}
         />
 
         <TextField
@@ -170,4 +184,3 @@ const mapStateToProps=state=>({
   })
 
 export default connect(mapStateToProps, { setAlert,createContact })(Contact);
-

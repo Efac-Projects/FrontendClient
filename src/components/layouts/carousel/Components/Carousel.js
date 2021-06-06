@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-
-
-import { images } from "../Helpers/CarouselData"
+import "./Carousel.css";
+import { images } from "../Helpers/CarouselData";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
@@ -22,9 +21,12 @@ function Carousel() {
         >
           <ArrowBackIosIcon style={{ fontSize: 30 }} />
         </div>
-        <div className="center">
-          <h1>{images[currImg].title}</h1>
-          <p>{images[currImg].subtitle}</p>
+        <div className="centerleft">
+          <h>{images[currImg].title}</h>
+          <p1>{images[currImg].subtitle}</p1>
+        </div>
+
+        <div className="centerright">
         </div>
         <div
           className="right"

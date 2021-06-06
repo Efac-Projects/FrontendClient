@@ -6,12 +6,13 @@ import { blue } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-import { ThemeProvider } from '@material-ui/styles';
+
 import Carousel from '../layouts/carousel/Components/Carousel';
 import img from '../../assests/logo.png';
-import imge from '../../assests/images.jpg';
-import { createMuiTheme } from '@material-ui/core/styles';
-
+import imge1 from '../../assests/Av1.jpg';
+import imge2 from '../../assests/Av2.jpg';
+import imge3 from '../../assests/Av3.jpg';
+import imge4 from '../../assests/Av4.jpg';
 
 function Copyright() {
     return (
@@ -26,11 +27,6 @@ function Copyright() {
     );
   }
 
-  const theme = createMuiTheme({
-    palette: {
-      primary: blue,
-    },
-  });
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '60%',
     height: '100%',
-    
+    marginTop: theme.spacing(0),
     backgroundColor: blue[500],
     color: blue[50],
   },
@@ -60,14 +56,10 @@ const Home=()=> {
   return (
     
       <Grid item xs={12} component={Paper} square>
-      
-          <Carousel/>
-
-          <ThemeProvider theme={theme}>
-        <Box color=' primary'  mt={2}></Box>
-
-        </ThemeProvider>
         <div className={classes.paper}>
+          <Carousel/>
+        <Box mt={4}></Box>
+
         <section className="pb-20 bg-blue-200 ">
               <div className=" mx-auto px-4">
                 <div className="flex flex-wrap">
@@ -253,7 +245,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge1}
                         className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />
@@ -286,7 +278,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge2}
                         className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />
@@ -318,7 +310,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge3}
                        className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />
@@ -350,7 +342,7 @@ const Home=()=> {
                     <div className="px-6">
                       <img
                         alt="..."
-                        src={imge}
+                        src={imge4}
                         className="shadow-lg rounded-full max-w-full mx-auto"
                         style={{ maxWidth: "120px" }}
                       />
