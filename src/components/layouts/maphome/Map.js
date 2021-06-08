@@ -1,171 +1,89 @@
-import React,{useState,useCallback, useRef} from 'react'
-import {
-    GoogleMap,
-    useLoadScript,
-    Marker,
-    InfoWindow,
-
-} from '@react-google-maps/api'
-
-import 
-    usePlacesAutocomplete,{
-        getGeocode,
-        getLatLng,
-    } 
- from 'use-places-autocomplete';
-
- import {
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-   
-  } from "@reach/combobox";
-  import "@reach/combobox/styles.css";
-
-
+import React,{useState, useEffect, useCallback, useRef} from 'react'
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import Spinner from '../Spinner'
 
 const libraries=["places"];
+
 const mapContainerStyle={
-    width:'100vw',
-    height:'50vh',
+    width:'99vw',
+    height:'100vh',
 }
-const center={
-    lat:6.7589,
-    lng:81.2491,
-}
+const center = {
+  lat:8.04,
+  lng:80.633728
+  
+};
 
-export default function Map () {
+function Map() {
+  const { isLoaded } = useLoadScript({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyCzTCpl9JjaAFIoTXeEgtHrzR62utfeyII",
+    libraries
+  })
 
-const {isLoaded, loadError}=useLoadScript({
-    googleMapsApiKey:"AIzaSyCzTCpl9JjaAFIoTXeEgtHrzR62utfeyII",
-    libraries,
-})
+  const [map, setMap] = React.useState(null)
 
-const [markers, setMarkers] = useState([])
-const [selected, setSelected] = useState(null)
+  const mapRef = useRef();
+  const onMapLoad= useCallback(
+      (map) => {
+          mapRef.current=map;
+      },
+      [],
+  )
 
-const onMapClick= useCallback(
-    (event)=>{
-       
-        setMarkers((current)=>[...current,
-         {
-     lat:event.latLng.lat(),
-     lng:event.latLng.lng(),
-     
-        }
-     ])
-     },
-    [],
-)
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
 
-const mapRef = useRef();
-const onMapLoad= useCallback(
-    (map) => {
-        mapRef.current=map;
-    },
-    [],
-)
+  const [locationData, setLocationData] = useState([]);
+  const [loading, setLoading] = useState(true)
 
-const panTo=useCallback(
-    ({lat,lng}) => {
-      mapRef.current.panTo({lat ,lng});
-      mapRef.current.setZoom(14);
-    },
-    [],
-)
-
-if (loadError) return "Error loading Maps";
-if (!isLoaded) return "Loading Maps";
-
-return <div>
-
-
-   <Search panTo={panTo}/>
-
-
-
-    <GoogleMap   
-    mapContainerStyle={mapContainerStyle}
-    zoom={8} 
-    center={center}
-    onClick={onMapClick}
-    onLoad={onMapLoad}
-    >
-{markers.map(marker=>(
-<Marker
- key={marker}
-  position={{lat:marker.lat, lng:marker.lng}}
-onClick={()=>{
-    setSelected(marker)
-}}
-
-  />
- ) )}
-
-{selected ? (<InfoWindow  position ={{lat:selected.lat, lng:selected.lng}} onCloseClick={()=>{
-    setSelected(null)
-}}>
-    <div>
-        <h2>
-          Location Selected  
-        </h2>
-       
-    </div>
-</InfoWindow>):null}
-
-    </GoogleMap>
-</div>
-
+  const locate = () => {
    
-}
-
-function Search ({panTo}) {
-
-    const {ready,
-        value,
-        suggestions:{status,data},
-        setValue,clearSuggestions} = usePlacesAutocomplete({
-        requestOptions:{
-            location:{ lat:()=> 6.7589,
-                lng:()=> 81.2491,},
-
-                radius:200*1000,
-        }
-    })
-    return (
-       
-<div className ='z-20'>
+    fetch(`https://localhost:5001/api/business/`)
+      .then(res => {
+          return res.json();})
+          .then((data)=>{
+        console.log(data);
+         
+setLocationData(data)
+setLoading(false)
+          })
         
-      <Combobox
-       onSelect={ async(address)=>{
-try {
-    const result =await getGeocode({address});
-    const {lat ,lng} =await getLatLng(result[0]);
-    panTo({lat,lng});
-} catch (error) {
-    console.log("error!")
-}
-       
+          .catch(err => {
+            console.log(err);
+          }); 
+        
+        }
 
-          console.log(address)
-          }}>
-<ComboboxInput 
-value={value} 
-onChange={(e)=>{
-    setValue(e.target.value)
+          useEffect(() => {
+           locate();
+          
+          }, []);
+if (loading) return (
+    <Spinner/>
+)
 
-}}
-disabled={!ready}
-placeholder='Enter an Address'
-/>
-<ComboboxPopover>
-    {status === "OK" && data.map(({id, description})=>(
-    <ComboboxOption key ={id} value={description} />
-    ))}
-</ComboboxPopover>
-      </Combobox>
-      </div>
-    )
+  return isLoaded ? (
+      <GoogleMap
+      mapContainerStyle={mapContainerStyle}
+        center={center}
+        zoom={8}
+        onLoad={onMapLoad}
+        onUnmount={onUnmount}
+      >
+        {
+         locationData.map((location)=>(
+            <Marker key={location.businessId} 
+            position={{lat:parseFloat(location.lat),
+           lng:parseFloat(location.lng)
+           }}
+            />
+        ))
 }
+        <></>
+      </GoogleMap>
+  ) : <>Error Loading Map</>
+}
+
+export default Map
