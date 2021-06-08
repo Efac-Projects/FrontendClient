@@ -27,7 +27,7 @@ function Footer() {
             <h3 className=' text-md py-3 text-red-700 '>COMPANY</h3>
             <ul className='text-xs font-sans'>
               <li className='py-1'>
-                <a className='hover:text-red-500 text-indigo-900' href='index'>
+                <a className='hover:text-red-500 text-indigo-900' href='/'>
                   Home
                 </a>
               </li>
@@ -42,8 +42,8 @@ function Footer() {
                 </a>
               </li>
               <li className='py-1'>
-                <a className='hover:text-red-500 text-indigo-900' href='services'>
-                  Services
+                <a className='hover:text-red-500 text-indigo-900' href='count'>
+                  Check Crowd
                 </a>
               </li>
             

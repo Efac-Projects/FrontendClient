@@ -23,7 +23,7 @@ function Privilage(props) {
                     Sorry, the page you're looking for cannot be accessed
                     </p>
 
-                    <a href ='index'>
+                    <a href ='/'>
                       <button  className="bg-red-500 hover:bg-pink-600 text-xs py-4 text-white font-bold py-2 px-4 rounded" type="submit">Back to Home
                       </button>
                       </a>

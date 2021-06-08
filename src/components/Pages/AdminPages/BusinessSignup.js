@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = ({ setAlert, businessRegister,isAuthenticated }) => {
+const BusinessSignup = ({ setAlert, businessRegister,isAuthenticated }) => {
   const classes = useStyles();
 
   const [formData, setFormData] = useState({
@@ -98,7 +98,7 @@ if(UserName && email && password && ConfirmPassword){
 
 
   if(isAuthenticated){
-    return <Redirect to="/index"/>
+    return <Redirect to="/"/>
   }
 
   return (
@@ -196,7 +196,7 @@ if(UserName && email && password && ConfirmPassword){
   );
 };
 
-SignUp.prototype = {
+BusinessSignup.prototype = {
   setAlert: PropTypes.func.isRequired,
   businessRegister: PropTypes.func.isRequired,
   isAuthenticated:PropTypes.bool,
@@ -207,4 +207,4 @@ const mapStateToProps=state=>({
   isAuthenticated:state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, { setAlert, businessRegister })(SignUp);
+export default connect(mapStateToProps, { setAlert, businessRegister })(BusinessSignup);

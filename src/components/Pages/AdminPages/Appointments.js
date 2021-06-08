@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection:'column',
       alignItems: 'center',
       //backgroundColor: lightBlue[50],
-      backgroundColor: green.A100,
+   
     },
     form: {
         width: '55%',

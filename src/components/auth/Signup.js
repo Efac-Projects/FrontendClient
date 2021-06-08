@@ -98,7 +98,7 @@ if(UserName && email && password && ConfirmPassword){
 
 
   if(isAuthenticated){
-    return <Redirect to="/index"/>
+    return <Redirect to="/"/>
   }
   return (
     <Grid container component="main" className={classes.root}>
