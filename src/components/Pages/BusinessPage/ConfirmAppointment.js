@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 const ConfirmAppointment = ({setAlert,createConfirm,history,auth,match,getAppointmentbyID,appointment:{appointment,loading}}) => {
 
   const [formData, setFormData] = useState({
-    phone:'',
+    phoneNumber:'',
     message:"",
   })
 
@@ -76,7 +76,7 @@ const ConfirmAppointment = ({setAlert,createConfirm,history,auth,match,getAppoin
 
 
 
-const{phone,message}=formData; 
+const{phoneNumber,message}=formData; 
 
 const onChange=e=>setFormData(
   {
@@ -86,7 +86,7 @@ const onChange=e=>setFormData(
 
 const onSubmit=e=>{
   e.preventDefault();
-  if (phone && message) {
+  if (phoneNumber && message) {
     e.preventDefault()
     createConfirm(formData,history)
   }
@@ -119,9 +119,9 @@ const onSubmit=e=>{
                 className='appearance-none block w-full bg-lightblue-50 text-black border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='grid-location'
                 type='text'
-                name='phone'
+                name='phoneNumber'
                 label='Phone Number'
-                value={phone}
+                value={phoneNumber}
                 onChange={(e) => onChange(e)}
                 placeholder='phone'
               />

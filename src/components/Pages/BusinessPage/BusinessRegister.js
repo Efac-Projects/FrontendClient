@@ -4,23 +4,46 @@ import {connect} from 'react-redux'
 import {createProfile} from '../../../actions/businessprofile'
 import {withRouter} from 'react-router-dom'
 import { setAlert } from "../../../actions/alert";
+import  PlacesAutocomplete,
+   {
+       geocodeByAddress,
+       geocodeByPlaceId,
+       getLatLng
+   }
+ from 'react-places-autocomplete';
+
+
 const defaultImageSrc = '/img/image_placeholder.png';
+
 
 
 const CreateProfile = ({profile:{profile,loading},createProfile,history}) => {
   
+  const [address,setAddress] =useState("")
+  const [coordinates,setCoordinates]=useState({
+     lat:'',
+      lng:''
+  
+  })
+  
+const{
+  lat,
+  lng
+}= coordinates
+
   const [formData,setFormData] = useState({
     BusinessType: '',
     Name: '',
     TotalCrowd: '',
     CurrentCrowd: '',
-    PostalCode: '',
+    PostalCode:'',
     PhoneNumber: '',
     Email: '',
     Summary: '',
    ImageName: '',
   ImageSrc: defaultImageSrc,
   ImageFile: null,
+  
   });
 
   const {
@@ -34,48 +57,42 @@ const CreateProfile = ({profile:{profile,loading},createProfile,history}) => {
     ImageName,
     ImageSrc,
     ImageFile,
+    
+   
   } = formData;
 
-  const onChange =e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleSelect=async value=>{
+    const results=await geocodeByAddress(value)
+    const ll =await getLatLng(results[0])
+    console.log(ll);
+    setAddress(value)
+    setCoordinates(ll)
+}
 
+
+
+  const onChange =e =>{
+    setFormData ({ ...formData, [e.target.name]: e.target.value });
+    setCoordinates ({ ...coordinates, [e.target.name]: e.target.value });
   
+  }
+
     const onSubmit=e=>{
       e.preventDefault();
-      if (Name && BusinessType && TotalCrowd && PostalCode && Email && PhoneNumber) {
+      if (Name && BusinessType && TotalCrowd  && Email && PhoneNumber) {
         e.preventDefault()
-        createProfile(formData,history)}
+        createProfile(coordinates,formData,history)}
             else{
               setAlert('Please fill all the fileds','warning');
             }
           }
  
 
-
- // show preview image
-  const showPreview = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      let imageFile = e.target.files[0];
-      const reader = new FileReader();
-      reader.onload = (x) => {
-        setFormData({
-          ...formData,
-          imageFile: ImageFile,
-          ImageSrc: x.target.result,
-        });
-      };
-      reader.readAsDataURL(imageFile);
-    } else {
-      setFormData({
-        ...formData,
-        ImageFile: null,
-        ImageSrc: defaultImageSrc,
-      });
-    }
-  };
-  
-
   return (
+
+
+
+
     <Fragment>
       <div className='w-full bg-white rounded  p-8 m-4 '>
         <h1 className='text-2xl xl:text-2xl font-extrabold text-orange-500 text-center '>
@@ -162,29 +179,131 @@ const CreateProfile = ({profile:{profile,loading},createProfile,history}) => {
               />
             </div>
           </div>
+          <div className='flex flex-wrap -mx-3 mb-6'>
+            <div className='w-full'>
+              <label
+                className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+                htmlFor='grid-website'
+              >
+              Postal Code
+              </label>
+              <input
+                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                id='grid-totalCrowd'
+                type='string'
+                name='PostalCode'
+                value={PostalCode}
+                onChange={(e) => onChange(e)}
+                placeholder=' Postal Code'
+              />
+            </div>
+          </div>
 
-  
+
+          <div className='  mx-3 mb-6'>
+
+
+
+          <PlacesAutocomplete
+        value={address}
+        onChange={setAddress}
+        onSelect={handleSelect}
+      >
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div >
+            
+<div className='flex flex-wrap -mx-3 '>
+  <div className='w-full'>
+
+<label
+                className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+                
+              >
+               Address
+              </label>
+            <input
+
+              {...getInputProps({
+                placeholder: 'Search Address',
+                className: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500',
+              })}
+            />
+</div>
+
+</div>
+            <div className="autocomplete-dropdown-container">
+              {loading && <div>Loading...</div>}
+              {suggestions.map(suggestion => {
+                const className = suggestion.active
+                  ? 'suggestion-item--active'
+                  : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
+    
+          </div>
+        )}
+      </PlacesAutocomplete>
+          </div>
+
+
+    <div className='flex flex-wrap -mx-3 mb-6'>
+            <div className='w-full'>
+              <label
+                className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+                htmlFor='grid-website'
+              >
+             
+              </label>
+              <input
+                onChange={(e) => onChange(e)}
+                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                id='grid-totalCrowd'
+                type='hidden'
+                name=' lat'
+                value={lat}
+               
+              />
+            </div>
+          </div>
 
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
                 className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
-                htmlFor='grid-location'
+                htmlFor='grid-website'
               >
-                Postal Code
+              
               </label>
               <input
                 className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
-                id='grid-location'
-                type='string'
-                name='PostalCode'
-                value={PostalCode}
+                id='grid-totalCrowd'
+                type='hidden'
+                name='lng'
+                value={lng}
                 onChange={(e) => onChange(e)}
-                placeholder='Postal Code'
               />
-           
             </div>
           </div>
+
+
+
+
+
+
 
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
@@ -201,7 +320,7 @@ const CreateProfile = ({profile:{profile,loading},createProfile,history}) => {
                 name='PhoneNumber'
                 value={PhoneNumber}
                 onChange={(e) => onChange(e)}
-                placeholder='phone'
+                placeholder='Phone Number'
               />
              
             </div>
@@ -222,7 +341,7 @@ const CreateProfile = ({profile:{profile,loading},createProfile,history}) => {
                 name='Email'
                 value={Email}
                 onChange={(e) => onChange(e)}
-                placeholder='email'
+                placeholder='Email'
               />
              
             </div>
@@ -249,25 +368,7 @@ const CreateProfile = ({profile:{profile,loading},createProfile,history}) => {
             </div>
           </div>
 
-          <div className='flex flex-wrap -mx-3 mb-6'>
-            <div className='w-full'>
-              <div class='bg-white rounded shadow border p-6 w-64'>
-                <img src={ImageSrc} />
-                <div>
-                  <input
-                    type='file'
-                    accept='image/*'
-                    onChange={showPreview}
-                    id='image-uploader'
-                  />
-                </div>
-              </div>
-
-              <p className='text-gray-600 text-xs italic'>
-                Upload your business card image
-              </p>
-            </div>
-          </div>
+     
 
           <button
             type='submit'

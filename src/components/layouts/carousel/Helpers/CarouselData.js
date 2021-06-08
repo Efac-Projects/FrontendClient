@@ -20,7 +20,7 @@ export const images = [
   
     {
       img: imge6,
-      title:"Your Health is Our Priority",
+      title:"Your Health isy",
       subtitle: "We are trying to give you all your medical requirements prioratizing your health."
     },
   

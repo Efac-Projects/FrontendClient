@@ -58,7 +58,7 @@ const Home=()=> {
       <Grid item xs={12} component={Paper} square>
         <div className={classes.paper}>
           <Carousel/>
-        <Box mt={4}></Box>
+        <Box mt={8}></Box>
 
         <section className="pb-20 bg-blue-200 ">
               <div className=" mx-auto px-4">

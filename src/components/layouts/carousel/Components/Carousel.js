@@ -13,28 +13,10 @@ function Carousel() {
         className="carouselInner"
         style={{ backgroundImage: `url(${images[currImg].img})` }}
       >
-        <div
-          className="left"
-          onClick={() => {
-            currImg > 0 && setCurrImg(currImg - 1);
-          }}
-        >
-          <ArrowBackIosIcon style={{ fontSize: 30 }} />
-        </div>
+       
         <div className="centerleft">
           <h>{images[currImg].title}</h>
           <p1>{images[currImg].subtitle}</p1>
-        </div>
-
-        <div className="centerright">
-        </div>
-        <div
-          className="right"
-          onClick={() => {
-            currImg < images.length - 1 && setCurrImg(currImg + 1);
-          }}
-        >
-          <ArrowForwardIosIcon style={{ fontSize: 30 }} />
         </div>
       </div>
     </div>

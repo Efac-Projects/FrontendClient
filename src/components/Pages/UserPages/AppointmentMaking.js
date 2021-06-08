@@ -45,7 +45,8 @@ const AppointmentMaking = ({setAlert
     phonenumber:'',
     treatmentId:'',
     age:'',
-    gender:''
+    gender:'',
+    startDate:''
 
   })
 
@@ -66,7 +67,7 @@ const AppointmentMaking = ({setAlert
     }, [loading,getProfilebyID,profile])
 
 
-const{firstname,lastname,businessId,age,phonenumber,treatmentId,gender,date}=formData; 
+const{firstname,lastname,businessId,age,phonenumber,treatmentId,gender,startDate}=formData; 
 
 const onChange=e=>setFormData(
   {
@@ -76,7 +77,7 @@ const onChange=e=>setFormData(
 
 const onSubmit=e=>{
   e.preventDefault();
-  if (firstname && lastname && businessId && treatmentId && phonenumber && date ) {
+  if (firstname && lastname && businessId && treatmentId && phonenumber && startDate ) {
 
     e.preventDefault()
     createAppointments(formData,history)
@@ -181,8 +182,8 @@ const onSubmit=e=>{
               <input
                 className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='date'
-                name='date'
-                value={date}
+                name='startDate'
+                value={startDate}
                 type='date'
                 placeholder='Date'
                 onChange={(e) => onChange(e)}
@@ -208,9 +209,11 @@ const onSubmit=e=>{
                 name='treatmentId'
                 value={treatmentId}
                 onChange={(e) => onChange(e)}
-                placeholder='Postal Code'
+                placeholder='Treatment Id'
               />
-             
+             <p className='text-red-500 text-xs italic mb-2'>
+            **You can choose your treatent Id from Find your Doctor option.
+          </p>
             </div>
           </div>
 

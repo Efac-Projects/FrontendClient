@@ -151,6 +151,7 @@ export const deleteAccount=()=>async dispatch=>{
 
 
 export const createProfile = (
+  coordinates,
   formData,
   history,
 ) => async dispatch => {
@@ -161,7 +162,7 @@ export const createProfile = (
         'Content-Type':'application/json'
       }
     }
-    const res = await axios.post('https://localhost:5001/api/business', formData,config);
+    const res = await axios.post('https://localhost:5001/api/business', coordinates,config,formData,config);
 
     dispatch({
       type: GET_PROFILE,

@@ -27,9 +27,7 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: '100vh',
-  },
+ 
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
@@ -80,95 +78,93 @@ const onSubmit=e=>{
 
 
   return (
-    <div className={classes.paper}>
+    <div className="w-full bg-white">
 
-      <Typography component='h1' variant='h5'>
-        Got a question?
-      </Typography>
+    
+    <div className="text-center px-6 py-12 mb-6 bg-gray-200 border-b">
+      <h1 className=" text-xl md:text-4xl text-blue-800 pb-4">Contact Us</h1>
+      <p className="leading-loose text-gray-dark">
+        NoQueue Team
+      </p>
+    </div>
+  
 
-      <Box mt={4}></Box>
+    <div className="container-fluid max-w-4xl mx-auto  px-12 md:px-0">
 
-      <Typography component='h1' variant='h7'>
-        Contact Us
-      </Typography>
+      <div className="flex flex-wrap justify-start items-start -mx-4">
 
-      <form onSubmit = { e=>onSubmit(e)} className={classes.form} noValidate>
-        <TextField
-        onChange={e=>onChange(e)}
-          variant='outlined'
-          margin='normal'
-          required
-          fullWidth
-          id='name1'
-          label='Full Name'
-          name='fullname'
-          value={fullname}
-        />
+        <div className="w-full md:w-1/2 p-4">
+          
+          <form  onSubmit={e=>onSubmit(e)}  >
+            <fieldset className="mb-4">
+              <label className="block text-sm text-gray-dark pb-2">Name</label>
+              <input
+              name='fullname'
+               onChange={e=>onChange(e)}
+               value={fullname}
+              className="block w-full border rounded py-2 px-3 text-sm text-gray-700" 
+              type="text" />
+           
+            </fieldset>
 
-        <TextField
-        onChange={e=>onChange(e)}
-          variant='outlined'
-          margin='normal'
-          required
-          fullWidth
-          name='email'
-          label='Email Address'
-          type='text'
-          id='email'
-          value={email}
-        />
+            <fieldset className="mb-4">
+              <label className="block text-sm text-gray-dark pb-2">Email</label>
+              <input 
+               name='email'
+              onChange={e=>onChange(e)}
+              value={email}
+              className="block w-full border rounded py-2 px-3 text-sm text-gray-700" 
+              type="text" />
+            </fieldset>
 
-<TextField
-        onChange={e=>onChange(e)}
-          variant='outlined'
-          margin='normal'
-          required
-          fullWidth
-          name='phonenumber'
-          label='Mobile Number'
-          type='text'
-          id='phonenumber'
-          value={phonenumber}
-        />
+            <fieldset className="mb-4">
+              <label className="block text-sm text-gray-dark pb-2">Phone Number</label>
+              <input 
+               name='phonenumber'
+              onChange={e=>onChange(e)}
+              value={phonenumber}
+              className="block w-full border rounded py-2 px-3 text-sm text-gray-700" 
+              type="tel" />
+            </fieldset>
 
-        <TextField
-        onChange={e=>onChange(e)}
-          variant='outlined'
-          margin='normal'
-          required
-          fullWidth
-          name='message'
-          label='Message for our team'
-          type='message'
-          id='message'
-          multiline
-          rows={4}
-          value={message}
-        />
+            <fieldset className="mb-4">
+              <label className="block text-sm text-gray-dark pb-2">Message</label>
+              <textarea 
+               name='message'
+              onChange={e=>onChange(e)}
+              value={message}
+              className="block w-full border border-red-300er rounded py-2 px-3 text-sm text-gray-700 h-32"></textarea>
+              <p className="text-xs pt-2 text-red-400">This field is required...</p>
+            </fieldset>
 
-        <Button
-          type='submit'
-          fullWidth
-          variant='contained'
-          color='primary'
-          className={classes.submit}
-        >
-          Submit
-        </Button>
-        <Grid container>
-          <Grid item>
-            <Link href='signup' variant='body2'>
-              {'Not a member? Sign Up'}
-            </Link>
-          </Grid>
-        </Grid>
+            <button 
+            type='submit'
+            className="text-sm py-2 px-3 bg-blue-600 text-white rounded  bg-blue-700 hover:bg-pink-600  " >Submit</button>
+          </form>
 
-        <Box mt={4}>
-          <Copyright />
-        </Box>
-      </form>
+        </div>
+
+        <div className="w-full md:w-1/2 p-4">
+        <div className="overflow-hidden rounded border mb-6"><div className=""><iframe className="w-full h-64" src="https://maps.google.com/maps?q=Faculty%20of%20Engineering,%20University%20of%20Ruhuna&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></div></div>
+
+          <p className="text-black font-bold mb-1">
+            Faculty of Engineering
+            
+          </p>
+          <p className="text-sm mb-2">
+          University of Ruhuna,<br />
+            Hapugala,<br />
+            Galle
+          </p>
+
+          <p className="text-black font-bold">(091) 2245765</p>
+        </div>
+
+      </div>
 
     </div>
+
+  </div>
   );
 }
 

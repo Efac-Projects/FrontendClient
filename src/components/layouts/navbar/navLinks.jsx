@@ -55,7 +55,7 @@ const NavLinks=({ auth: { isAuthenticated, loading,user } })=> {
       <Fragment>
    
         <LinkItem>
-          <Link href="/index">Home</Link>
+          <Link href="/">Home</Link>
         </LinkItem>
         <LinkItem>
           <Link href="/about">About us</Link>
@@ -93,7 +93,7 @@ const NavLinks=({ auth: { isAuthenticated, loading,user } })=> {
             <Fragment>
          
               <LinkItem>
-                <Link href="/index">Home</Link>
+                <Link href="/">Home</Link>
               </LinkItem>
               <LinkItem>
                 <Link href="/about">About us</Link>

@@ -15,7 +15,7 @@ import { green } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      height: '125vh',
+      height: '100vh',
     },
     paper: {
       margin: theme.spacing(0,0),
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection:'column',
       alignItems: 'center',
       //backgroundColor: lightBlue[50],
-      backgroundColor: green.A100,
+      
     },
     form: {
         width: '70%',
@@ -50,10 +50,7 @@ const classes = useStyles();
     return( 
      
         <div   style={{
-          display: 'flex',
-        
-         
-          height: '90vh',
+      
         }} className={classes.paper}>
           
           <Box mt={5}></Box>
@@ -71,9 +68,9 @@ const classes = useStyles();
          
         
         </div>
-        <div className='card' >
+        <div  >
       
-        <div className='card' >
+        <div  >
         {appointment.length>0 ?(
                        appointment.map(appointment=>(
                            <AppointmentIdItem key={appointment._id} appointment={appointment}/>
