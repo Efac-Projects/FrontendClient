@@ -16,7 +16,7 @@ import AdminHome from './components/Pages/AdminPages/AdminHome'
 import Home from './components/Pages/Home';
 import About from './components/Pages/UserPages/About'
 import SignIn from './components/auth/SignIn';
-import SignUp from './components/auth/SignUp';
+import SignUp from './components/auth/Signup';
 import AppointmentMaking from './components/Pages/UserPages/AppointmentMaking';
 import TreatmentMaking from './components/Pages/BusinessPage/TreatmentMaking';
 import ForgotPassword from './components/auth/ForgotPassword';
