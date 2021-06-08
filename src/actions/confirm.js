@@ -33,7 +33,7 @@ import {
           dispatch(setAlert('Appointment Successfully Confirmed', 'success'));
       
         
-            history.push('/index');
+            history.push('/');
           
         } catch (err) {
           const errors =err.response.data.errors;

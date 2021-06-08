@@ -87,7 +87,7 @@ export const createContact = (
     });
 
     dispatch(setAlert( 'Thank you for contacting us' ,'success',<i className="material-icons">done</i>));
-    history.push('/index');
+    history.push('/');
   } catch (err) {
     const errors =err.response.data.errors;
 

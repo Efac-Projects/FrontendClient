@@ -76,7 +76,7 @@ export const  getTreatmentbyID=(businessId)=>async dispatch=>{
           dispatch(setAlert('Treatment Added  Successfully', 'success'));
       
         
-            history.push('/index');
+            history.push('/');
           
         } catch (err) {
           const errors =err.response.data.errors;

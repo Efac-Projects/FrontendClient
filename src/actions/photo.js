@@ -47,7 +47,7 @@ export const  getCurrentPhoto=()=>async dispatch=>{
           dispatch(setAlert( 'Image Uploaded Sucessfully' ,'success',<i className="material-icons">done</i>));
       
           if (edit) {
-            history.push('/index');
+            history.push('/');
           }
         } catch (err) {
           const errors =err.response.data.errors;

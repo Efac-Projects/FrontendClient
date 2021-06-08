@@ -56,7 +56,7 @@ export const  getAppointments=()=>async dispatch=>{
           dispatch(setAlert('Appointment Added  Successfully', 'success'));
       
         
-            history.push('/index');
+            history.push('/');
           
         } catch (err) {
           const errors =err.response.data.errors;
