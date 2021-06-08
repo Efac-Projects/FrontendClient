@@ -6,7 +6,6 @@ import { blue } from '@material-ui/core/colors';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
-
 import Carousel from '../layouts/carousel/Components/Carousel';
 import img from '../../assests/logo.png';
 import imge1 from '../../assests/Av1.jpg';
@@ -57,10 +56,11 @@ const Home=()=> {
     
       <Grid item xs={12} component={Paper} square>
         <div className={classes.paper}>
+          
           <Carousel/>
-        <Box mt={8}></Box>
 
-        <section className="pb-20 bg-blue-200 ">
+        <section className="pb-20 bg-gradient-to-b from-green-200 to-blue-100 ">
+        <Box mt={4}></Box>
               <div className=" mx-auto px-4">
                 <div className="flex flex-wrap">
                   <div className=" pt-6 w-full md:w-4/12 px-4 text-center">
@@ -74,8 +74,8 @@ const Home=()=> {
                         NoQueue facilitates an effective and convenient way to channel your doctor and reach your doctor just on time avoiding unnecessary expoesure to crowds.
                         </h6>
                       </div>
-                      <a href="services" className='text-gray-500'>
-                      <button  className="bg-purple-900 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" onClick="services" type="submit">Our Services           
+                      <a href="count" className='text-gray-500'>
+                      <button  className="bg-purple-900 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" onClick="services" type="submit">Check Crowd           
                       </button>
                       </a>
                     </div>
@@ -115,8 +115,8 @@ const Home=()=> {
                           Best doctors with best equipments supply their efficient service to serve you. Make your appointment at the nearest location where you can reach easily.
                         </h6>
                       </div>
-                      <a href="/appointment" className='text-gray-500'>
-                      <button  className="bg-green-700 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">Make Appointment
+                      <a href='businessess'>
+                      <button  className="bg-green-700 hover:bg-blue-800 text-xs text-white font-bold py-2 px-4 rounded" type="submit">Find Your Doctor
                       </button>
                       </a>
                     </div>
@@ -125,7 +125,7 @@ const Home=()=> {
               </div>
             </section>
 
-            <section className="relative py-20 bg-white w-full">
+            <section className="relative py-20 bg-white w-full ">
               <div
                 className="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                 style={{ height: "80px", transform: "translateZ(0)" }}
