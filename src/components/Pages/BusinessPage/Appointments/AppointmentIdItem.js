@@ -10,7 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import {Link} from 'react-router-dom'
-import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,9 +47,10 @@ function AppointmentIdItem({appointment:{
   lastName,
   phoneNumber,
   treatmentId,
+  date,
   age,
   gender,
-  
+  createdAt,
 
 }}) 
 
@@ -58,55 +59,36 @@ function AppointmentIdItem({appointment:{
   const classes = useStyles();
 
   return (
-    <Grid align='center'>
-    <div align='center' className={classes.base}>
-      <Accordion align='center'>
-        <AccordionSummary align='center'
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-           <Typography className={classes.heading} component="h4" variant="h4">
-          <h8 className="font-sans text-large font-bold text-blue-900">Appointment Number: {appointmentId}</h8>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            First Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {firstName}
-          </Typography>
-        </AccordionDetails>
-        <AccordionDetails>
-          <Typography>
-            Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {lastName}
-          </Typography>
-        </AccordionDetails>
-        <AccordionDetails>
-          <Typography>
-            Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: {gender}
-          </Typography>
-        </AccordionDetails>
-        <AccordionDetails>
-          <Typography>
-            Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {age}
-          </Typography>
-        </AccordionDetails>
-        <AccordionDetails>
-          <Typography>
-            Telephone &nbsp;&nbsp;&nbsp;&nbsp;: {phoneNumber}
-          </Typography>
-        </AccordionDetails>
-       
-        
-          
-        <div><Link to={`/confirm/appoint/${appointmentId}`} className="bg-green-500 hover:bg-blue-800 text-xs text-white font-bold py-1 px-4 rounded">
-          Confirm Appointment</Link>
-         
-        
+    <body className=" flex justify-center mb-6 items-center">
+    <div className="w-2/3 flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
+  <div className="bg-gray-200  text-blue-700 text-lg px-6 py-4"> Appointment :{appointmentId} <div classNameName='text-pink-700 text-xs'> Created at: {createdAt}</div></div>
+      <div className="flex justify-between items-center px-6 py-4">
+        <div className="bg-red-600 text-xs uppercase px-2 py-1 rounded-full border border-gray-200 text-gray-200 font-bold">Under Review</div>
+        <div className="text-sm">08-06-2021</div>
+      </div>
+      <div className="px-6 py-4 border rounded-lg border-gray-200">
+        <div className=" p-2 bg-gray-200">
+         Name: {firstName} { lastName}
         </div>
-       
-      </Accordion> 
+        <div className=" p-2 bg-gray-200">
+         Age: {age}
+        </div>
+        <div className=" p-2 bg-gray-200">
+        Gender: {gender}
+        </div>
+        <div className=" p-2 bg-gray-200">
+         Phone Number: {phoneNumber}
+        </div>
+      </div>
+      <div className="bg--200 px-6 py-2">
+        <div className="flex items-center ">
+        <button className="block mb-4 px-3 py-2 text-xs font-bold rounded-full no-underline hover:shadow bg-blue-600 text-white"><Link to={`/confirm/appoint/${appointmentId}`}>
+          Confirm Appointment</Link></button>
+        </div>
+      </div>
     </div>
-    </Grid>
+  </body>
+
   );
 }
 

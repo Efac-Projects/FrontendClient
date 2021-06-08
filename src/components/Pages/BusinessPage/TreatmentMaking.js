@@ -7,7 +7,6 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { pink } from '@material-ui/core/colors';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import InputLabel from '@material-ui/core/InputLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { lightBlue } from '@material-ui/core/colors';
@@ -19,6 +18,7 @@ import {withRouter} from 'react-router-dom'
 import {createTreatments} from '../../../actions/treatment'
 import {getProfilebyID} from '../../../actions/businessprofile'
 import Paper from '@material-ui/core/Paper';
+
 
 
 function Copyright() {
@@ -114,7 +114,7 @@ const onSubmit=e=>{
         }
       }
 
-     
+     const [selectedDate, setSelectedDate] = useState(new Date());
 
   const classes = useStyles();
 
@@ -126,21 +126,33 @@ const onSubmit=e=>{
           <Typography component="h1" variant="h5">
             Create the Treatment
           </Typography>
-          <Box mt={2}></Box>
+          <Box mt={0}></Box>
 
           <form onSubmit = { e=>onSubmit(e)} className={classes.form} noValidate>
-            <TextField
-            onChange={e=>onChange(e)}
-        
+
+          <div className='flex flex-wrap -mx-3 mb-6'>
+            <div className='w-full'>
+              <label
+                className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+                htmlFor='grid-location'
+              >
+
+              </label>
+              <input
+                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                id='grid-location'
+                type='HIDDEN'
+                name='businessId'
+                value={businessId}
+                hid
+                onChange={(e) => onChange(e)}
+                placeholder='Postal Code'
+              />
+              
+            </div>
+          </div>
+
            
-            required
-            fullWidth
-            id="Business ID"
-           
-            name="businessId"
-            type="HIDDEN"
-            value={businessId}
-            />     
 
             <TextField
              onChange={e=>onChange(e)}
@@ -200,24 +212,25 @@ const onSubmit=e=>{
 <Grid item xs={12}>
 <div className='w-full  mb-6 md:mb-0'>
             <label
-              className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+              className='block tracking-wide text-gray-500 text-sm mb-2'
               htmlFor='grid-state'
             >
               Availability
             </label>
             <div className='relative'>
               <select
-                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                className='appearance-none block w-full text-gray-700 border border-gray-400 rounded py-4 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='grid-state'
                 name='availability'
                 value={availability}
                 onChange={(e) => onChange(e)}
               >
-               <option value='daily'>Daily</option>
-      <option value='weekdays'>Weekdays</option>
-      <option value='weekends'>Weekends</option>
-      <option value='weekly'>Weekly</option>
-      <option value='monthly' >Monthly</option>
+       <option value=''></option>
+      <option value='Weekdays'>Weekdays</option>
+      <option value='Daily'>Daily</option>
+      <option value='Weekends'>Weekends</option>
+      <option value='Weekly'>Weekly</option>
+      <option value='Monthly' >Monthly</option>
               </select>
               <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
                 <svg
@@ -235,27 +248,27 @@ const onSubmit=e=>{
 <Grid item xs={12}>
 <div className='w-full  mb-6 md:mb-0'>
             <label
-              className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+              className='block tracking-wide text-gray-500 text-sm mb-2'
               htmlFor='grid-state'
             >
               If weekly, choose the day
             </label>
             <div className='relative'>
               <select
-                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                className='appearance-none block w-full text-gray-700 border border-gray-400 rounded py-4 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
                 id='grid-state'
                 name='day'
                 value={day}
                 onChange={(e) => onChange(e)}
               >
            <option value='none'></option>
-      <option value='sunday'>Sunday</option>
-      <option value='monday'>Monday</option>
-      <option value='tuesday'>Tuesday</option>
-      <option value='wednesday'>Wednesday</option>
-      <option value='thursday'>Thursday</option>
-      <option value='friday'>Friday</option>
-      <option value='saturday'>Saturday</option>
+      <option value='Sunday'>Sunday</option>
+      <option value='Monday'>Monday</option>
+      <option value='Tuesday'>Tuesday</option>
+      <option value='Wednesday'>Wednesday</option>
+      <option value='Thursday'>Thursday</option>
+      <option value='Friday'>Friday</option>
+      <option value='Saturday'>Saturday</option>
               </select>
               <div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700'>
                 <svg
@@ -271,17 +284,22 @@ const onSubmit=e=>{
       </Grid>
 
       <Box mt={2}></Box>
-      <InputLabel htmlFor="select" value={date} onChange={e=>onChange(e)}>If monthly, choose the date</InputLabel>
-<TextField
+      <label
+              className='block tracking-wide text-gray-500 text-sm mb-2'
+              htmlFor='grid-state'
+            >
+              If monthly, choose the date
+            </label>
+
+            <TextField
  onChange={e=>onChange(e)}
     variant="outlined"
     margin="normal"
-    
     fullWidth
     id="date"
     label="Available Date"
-
     type="date"
+    clearable
     name="date"
     value={date}
     className={classes.textField}
@@ -289,6 +307,7 @@ const onSubmit=e=>{
       shrink: true,
     }}
   />
+
 
 <Box mt={2}></Box>
 <Typography component="h7" variant="h8"  className={classes.typo}>

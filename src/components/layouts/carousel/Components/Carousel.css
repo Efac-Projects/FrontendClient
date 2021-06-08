@@ -1,38 +1,51 @@
 .carousel {
+  flex-grow: 1;
   width: 100%;
   height: 700px;
+  position: relative;
+  margin: auto;
 }
 
 .carouselInner {
   height: 100%;
   width: 100%;
+  object-fit: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  object-position: center;
+  position: absolute;
 }
 
 h {
-  font-size: 70px;
+  font-size: 55px;
   font-weight: bolder;
+  padding-top: 120px;
+  padding-bottom: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 p1 {
   font-size: 1.5rem;
   font-weight: bold;
+  padding-bottom: 300px;
+  padding-top: 0px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 h,
 p1 {
-  padding: 70px;
-  border-radius: 10px;
   color: white;
+  text-align: left;
 }
 
 .carouselInner .left {
   flex: 0.25%;
   height: 100%;
-  background-color: rgba(206, 247, 248, 0.4);
+  background-color: rgba(182, 235, 241, 0.5);
   display: grid;
   place-items: center;
   color: white;
@@ -45,7 +58,6 @@ p1 {
   display: grid;
   place-items: left;
   font-family: Helvetica;
-  text-align: center;
   text-align-last: left;
 }
 
@@ -55,7 +67,6 @@ p1 {
   display: grid;
   place-items: left;
   font-family: ui-serif;
-  text-align: center;
   text-align-last: left;
 
   background-image: linear-gradient(
@@ -68,7 +79,7 @@ p1 {
 .carouselInner .right {
   flex: 0.25%;
   height: 100%;
-  background-color: rgba(182, 235, 241, 0.4);
+  background-color: rgba(182, 235, 241, 0.5);
   display: grid;
   place-items: center;
   color: white;

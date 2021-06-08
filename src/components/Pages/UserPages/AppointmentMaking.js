@@ -1,28 +1,11 @@
 import React, { useState,useEffect } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { pink } from '@material-ui/core/colors';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { lightBlue } from '@material-ui/core/colors';
-import { blueGrey } from '@material-ui/core/colors';
 import { connect } from 'react-redux';
 import { setAlert } from '../../../actions/alert';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom'
 import {createAppointments} from '../../../actions/appointments'
 import {getProfilebyID} from '../../../actions/businessprofile'
-import { Hidden } from '@material-ui/core';
 import {getTreatmentbyID} from '../../../actions/treatment'
-import  TreatmentIdItem from '../BusinessPage/TreatmentIdItem'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -208,7 +191,7 @@ const onSubmit=e=>{
                 name='treatmentId'
                 value={treatmentId}
                 onChange={(e) => onChange(e)}
-                placeholder='Postal Code'
+                placeholder='Treatment Id'
               />
              
             </div>

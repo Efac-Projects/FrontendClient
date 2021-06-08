@@ -1,29 +1,24 @@
 import React,{Fragment,useEffect} from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import Spinner from '../../../layouts/Spinner'
 import {getAppointmentbyID, getCurrentAppointment} from '../../../../actions/appointments'
 import AppointmentIdItem from './AppointmentIdItem'
 import { getProfilebyID} from '../../../../actions/businessprofile'
-import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import { lightBlue } from '@material-ui/core/colors';
 import Typography from '@material-ui/core/Typography';
-import { green } from '@material-ui/core/colors';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      height: '125vh',
+      height: '100vh',
     },
     paper: {
       margin: theme.spacing(0,0),
       display: 'flex',
       flexDirection:'column',
       alignItems: 'center',
-      //backgroundColor: lightBlue[50],
-      backgroundColor: green.A100,
     },
     form: {
         width: '70%',
@@ -50,10 +45,7 @@ const classes = useStyles();
     return( 
      
         <div   style={{
-          display: 'flex',
-        
          
-          height: '90vh',
         }} className={classes.paper}>
           
           <Box mt={5}></Box>
