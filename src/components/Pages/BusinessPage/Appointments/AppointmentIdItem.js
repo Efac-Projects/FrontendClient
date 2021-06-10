@@ -30,7 +30,14 @@ createdAt,
 
   const classes = useStyles();
 
+
+
   return (
+
+<div
+className={classes.root}
+>
+
     <body className=" flex justify-center mb-6 items-center">
     <div className="w-2/3 flex flex-col bg-white shadow-lg rounded-lg overflow-hidden">
   <div className="bg-gray-200  text-blue-700 text-lg px-6 py-4"> Appointment :{appointmentId} <div classNameName='text-pink-700 text-xs'> Created at: {createdAt}</div></div>
@@ -69,6 +76,7 @@ createdAt,
       </div>
     </div>
   </body>
+  </div>
   );
 }
 

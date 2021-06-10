@@ -38,7 +38,6 @@ export const  getContacts=()=>async dispatch=>{
 
 
 
-
 //Delete contact
 
 export const deleteContact=(contactId,history)=>async dispatch=>{
@@ -90,6 +89,44 @@ export const createContact = (
 
    dispatch(setAlert('Thank you for contacting us','success'))
     history.push('/');
+  } catch (err) {
+    const errors =err.response.data.errors;
+
+    if (errors) {
+    dispatch(setAlert(errors,'danger',  <i className="material-icons">report</i>));
+    }
+
+    dispatch({
+      type: CONTACT_ERROR,
+      payload: "somthing went wrong"
+    });
+  }
+};
+
+
+//create Reply
+
+
+export const createReply = (
+  formData,
+  history,
+) => async dispatch => {
+  try {
+
+    const config={
+      headers:{
+        'Content-Type':'application/json'
+      }
+    }
+    const res = await axios.post('https://localhost:5001/api/contactus/reply', formData,config);
+
+    dispatch({
+      type: CRAETE_CONTACT,
+      payload: res.data
+    });
+
+   dispatch(setAlert('Reply Sent','success'))
+    history.push('/adminHome');
   } catch (err) {
     const errors =err.response.data.errors;
 

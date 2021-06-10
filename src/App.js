@@ -38,6 +38,7 @@ import Privilage from './components/Pages/error/Privilage'
 import BusinessSignup from './components/Pages/AdminPages/BusinessSignup';
 import CountHome from './components/Pages/BusinessPage/count pages/CountHome';
 import EmailVerified  from './components/Pages/EmailVerified';
+import ReplyContact from './components/Pages/AdminPages/ReplyContact';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -80,6 +81,7 @@ const App = () => {
           <Private exact path='/treatment/:businessId' component={TreatmentById} />
           <Admin path='/appointments' component={Appointments} />
           <Admin exact path='/adminHome' component={AdminHome}/>
+          <Admin exact path='/contact/reply' component={ReplyContact}/>
           <Route path='/map' component={Map} />
            <Business exact path='/editProfile/:businessId' component={EditProfile} />
 

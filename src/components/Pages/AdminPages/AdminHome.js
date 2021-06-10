@@ -44,7 +44,7 @@ const StyledTableCell = withStyles((theme) => ({
     },
     paper: {
       margin: theme.spacing(0,0),
-     
+    height:'100%',
       flexDirection:'column',
       alignItems: 'center',
       //backgroundColor: lightBlue[50],
@@ -53,7 +53,12 @@ const StyledTableCell = withStyles((theme) => ({
 
     table:{
       minWidth:700
-    }
+    },
+
+nroot:{
+  height:'100vh'
+}
+
 
   }));
 
@@ -74,7 +79,7 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
        const classes = useStyles();
     return (
 
-<Grid item xs={12} component={Paper} square>
+<Grid item xs={12} component={Paper} className={classes.nroot} square>
 
  <div className={classes.paper}>
         <div className=" w-full mx-auto pt-10">
@@ -241,7 +246,8 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
               <StyledTableCell align="right">Email</StyledTableCell>
               <StyledTableCell align="right">Message</StyledTableCell>
               <StyledTableCell align="right">Reply</StyledTableCell>
-              <StyledTableCell align="right">Delete</StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell>
+              <StyledTableCell align="right"></StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -273,15 +279,18 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
                       {contact.message}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      <a href="/">Reply</a>
+                      {contact.reply}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-    <button onClick={()=>
+                      <a className='bg-blue-600 rounded-lg p-3 text-white'  href="/contact/reply">Reply</a>
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+    <button  onClick={()=>
       
       deleteContact(contact.contactId)
       
       
-      } className='btn btn-red'>Delete</button>
+      } className='bg-red-600 rounded-lg p-2 text-white'>Delete</button>
                     </StyledTableCell>
                   </StyledTableRow>
                 );

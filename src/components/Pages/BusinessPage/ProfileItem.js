@@ -15,6 +15,15 @@ import image from '../../../assests/business.JPG'
 
 const useStyles = makeStyles((theme) => ({
   
+ root: {
+    height: '100vh',
+  },
+
+  paper: {
+    height:"100%"
+  
+  },
+  
     cardContent: {
         flexGrow: 1,
       },
@@ -32,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8),
       },
+
+
+    
 
     }));
 
@@ -63,11 +75,10 @@ function ProfileItem({ profile:{
   
     
 return(
-  
-    <div>
-      
+   <Grid item xs={12} component={Paper} square>
+<div className={classes.root}>
+  <div className={classes.paper}>
 
-          <Grid item xs={12} component={Paper} square>
       <Container align='center' className={classes.cardGrid} maxWidth='md'>
           <Grid container spacing={2}>
 
@@ -100,12 +111,17 @@ return(
                   </Card>
                   
               </Grid>
-            
-                  </Grid>     
+           
+                  </Grid>  
                  
-                  </Container></Grid>
+
+                  </Container>
                   </div>
-          
+                  </div>   
+             
+                  
+                  </Grid>
+                  
         )
       
 }
