@@ -1,8 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { setAlert } from './alert';
-import jwt_decode from "jwt-decode";
-import setAuthToken from '../utils/setAuthtoken';
+
 
 import {
  GET_PROFILE,
@@ -11,7 +10,7 @@ import {
  CLEAR_PROFILE,
  DELETE_ACCOUNT,
  GET_PROFILES,
-CLEAR_PHOTO
+
 } from './types'
 
 

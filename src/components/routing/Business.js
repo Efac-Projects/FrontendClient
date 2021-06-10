@@ -15,7 +15,7 @@ const Business = ({ component: Component,
         <Spinner />
       ) : isAuthenticated ? (
 
-        (user.userRole=='Business'|| user.userRole=='Admin')?
+        (user.userRole==='Business'|| user.userRole==='Admin')?
 
         <Component {...props} />:( <Redirect to="/index" />)
       ) : (

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "./Carousel.css";
 import { images } from "../Helpers/CarouselData";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import MobileStepper from '@material-ui/core/MobileStepper';
 import Grid from '@material-ui/core/Grid';
 
 function Carousel() {

@@ -7,17 +7,13 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { pink } from '@material-ui/core/colors';
-import InputLabel from '@material-ui/core/InputLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { lightBlue } from '@material-ui/core/colors';
 import { blueGrey } from '@material-ui/core/colors';
 import { connect } from 'react-redux';
 import { setAlert } from '../../../actions/alert';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom'
 import {createTreatments} from '../../../actions/treatment'
 import {getProfilebyID} from '../../../actions/businessprofile'
-import Paper from '@material-ui/core/Paper';
+
 
 
 
@@ -71,6 +67,7 @@ const TreatmentMaking = ({setAlert,createTreatments,history,auth,match,getProfil
    name:"",
    doctorName:"",
    price:'',
+   duration:'',
    availability:'',
    day:'',
    date:'',
@@ -94,7 +91,7 @@ const TreatmentMaking = ({setAlert,createTreatments,history,auth,match,getProfil
     }, [loading,getProfilebyID,profile])
 
 
-const{businessId,specification,name,doctorName,price,availability,day,date,timeFrom,timeTo}=formData; 
+const{businessId,specification,name,doctorName,price,availability,day,date,timeFrom,timeTo, duration}=formData; 
 
 const onChange=e=>setFormData(
   {
@@ -113,8 +110,6 @@ const onSubmit=e=>{
           setAlert('Please fill all the required fileds','warning');
         }
       }
-
-     const [selectedDate, setSelectedDate] = useState(new Date());
 
   const classes = useStyles();
 
@@ -193,6 +188,18 @@ const onSubmit=e=>{
             />   
 
 
+
+<TextField
+             onChange={e=>onChange(e)}
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Duration"
+              label="Duration"
+              name="duration"
+              value={duration}
+            />   
 
 <TextField
              onChange={e=>onChange(e)}

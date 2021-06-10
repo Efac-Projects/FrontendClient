@@ -175,10 +175,10 @@ user.userRole ==='Admin'
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
-
+              <Grid item className='text-gray-400'>
+              Not a member?
                 <Link href="signup" variant="body2">
-                  {"Not a member? Sign Up"}
+                {" Sign Up"}
                 </Link>
               </Grid>
             </Grid>

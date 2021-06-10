@@ -1,4 +1,4 @@
-import { GET_APPOINTMENTS, APPOINTMENT_ERROR, GET_APPOINTMENT, UPDATE_APPOINTMENT,MAKE_APPOINTMENT ,CLEAR_APPOINTMENT} from "../actions/types"
+import { GET_APPOINTMENTS, APPOINTMENT_ERROR, GET_APPOINTMENT} from "../actions/types"
 
 const initalState={ 
     appointment:[],
@@ -8,7 +8,7 @@ const initalState={
     
 }
 
-export default function (state=initalState,action){
+export default function foo(state=initalState,action){
     const{type,payload}=action
 
     switch(type){

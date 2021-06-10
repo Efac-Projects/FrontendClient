@@ -15,15 +15,17 @@ import TableHead from "@material-ui/core/TableHead";
 import TextField from "@material-ui/core/TextField";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
-import Button from  "@material-ui/core/Paper";
+import Grid from '@material-ui/core/Grid';
+
 
 const StyledTableCell = withStyles((theme) => ({
+
     head: {
       backgroundColor: theme.palette.info.light,
       color: theme.palette.common.white,
     },
     body: {
-      fontSize: 14,
+      fontSize: 14
     },
   }))(TableCell);
   
@@ -36,29 +38,45 @@ const StyledTableCell = withStyles((theme) => ({
     },
   }))(TableRow);
   
-  const useStyles = makeStyles({
-    table: {
-      minWidth: 700,
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      height: '100vh',
     },
-  });
+    paper: {
+      margin: theme.spacing(0,0),
+     
+      flexDirection:'column',
+      alignItems: 'center',
+      //backgroundColor: lightBlue[50],
+   
+    },
+
+    table:{
+      minWidth:700
+    }
+
+  }));
 
 
-
+ 
 
 const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users} ,getContacts,contact:{contacts}}) => {
 
-    const classes = useStyles();
    
     const [search, setSearch] = useState("");
-
+    const [searchs, setSearchs] = useState("");
 
     useEffect(()=>{
         getAllUsers()
         getContacts()
        },[getAllUsers,getContacts])
 
+       const classes = useStyles();
     return (
- <div>
+
+<Grid item xs={12} component={Paper} square>
+
+ <div className={classes.paper}>
         <div className=" w-full mx-auto pt-10">
         Welcome {user && user.userName}!
      
@@ -138,17 +156,19 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
 
 
            </div>
-<div>
+<div className="w-full px-4 md:px-0  text-gray-800 leading-normal">
 
       <TextField
-      id="outlined-basic" label="Search" variant="outlined"
-      style={{margin:'10px'}}
+      id="outlined-basic" label="Search Users" variant="outlined"
+      style={{margin:'10px', marginTop:'80px'}}
         type="text"
         placeholder="Search here"
         onChange={(e) => {
           setSearch(e.target.value);
         }}
       />
+
+
 
 <TableContainer className='container-fluid flex-auto' component={Paper}>
         <Table className={classes.table} aria-label="customized table">
@@ -164,7 +184,7 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
           <TableBody>
             {users
               .filter((item) => {
-                if (search == '') {
+                if (search === '') {
                   return item;
                 } else if (
                   item.userName.toString().toLowerCase().includes(search.toLowerCase())
@@ -200,19 +220,19 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
 
 
 
-<div>
-<TextField
-      id="outlined-basic" label="Search" variant="outlined"
-      style={{margin:'10px'}}
+<div className="w-full px-4 md:px-0  text-gray-800 leading-normal">
+
+<TextField 
+      id="outlined-basic" label="Search Contacts" variant="outlined"
+      style={{margin:'10px', marginTop:'80px'}}
         type="text"
         placeholder="Search here"
         onChange={(e) => {
-          setSearch(e.target.value);
+          setSearchs(e.target.value);
         }}
       />
 
-
-<TableContainer className='container-fluid flex-auto' component={Paper}>
+<TableContainer className='container-fluid flex-auto pb-5' component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -220,16 +240,17 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
               <StyledTableCell align="right">Name</StyledTableCell>
               <StyledTableCell align="right">Email</StyledTableCell>
               <StyledTableCell align="right">Message</StyledTableCell>
+              <StyledTableCell align="right">Reply</StyledTableCell>
               <StyledTableCell align="right">Delete</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {contacts
               .filter((contact) => {
-                if (search == '')  {
+                if (searchs ==='')  {
                   return contact;
                 } else if (
-                  contact.email.toString().toLowerCase().includes(search.toLowerCase())
+                  contact.email.toString().toLowerCase().includes(searchs.toLowerCase())
                 ) {
                   return contact;
                 }
@@ -252,6 +273,9 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
                       {contact.message}
                     </StyledTableCell>
                     <StyledTableCell align="right">
+                      <a href="/">Reply</a>
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
     <button onClick={()=>
       
       deleteContact(contact.contactId)
@@ -271,18 +295,9 @@ const AdminHome =({  deleteContact,getAllUsers,auth:{user,loading},users:{users}
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
 </div>
-	
+</Grid>
+
     )
 }
 

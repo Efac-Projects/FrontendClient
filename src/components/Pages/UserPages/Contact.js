@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { pink } from '@material-ui/core/colors';
@@ -28,6 +24,10 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
  
+  root: {
+    height: '100vh',
+  },
+
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
@@ -53,10 +53,9 @@ const Contact = ({setAlert,createContact,history}) => {
     fullname:'',
     email:"",
     message:"",
-    phonenumber:"",
   })
 
-const{fullname,email,message,phonenumber}=formData; 
+const{fullname,email,message}=formData; 
 
 const onChange=e=>setFormData(
   {
@@ -66,7 +65,7 @@ const onChange=e=>setFormData(
 
 const onSubmit=e=>{
   e.preventDefault();
-  if (fullname && email && message && phonenumber) {
+  if (fullname && email && message) {
     e.preventDefault()
     createContact(formData,history)}
         else{
@@ -117,15 +116,6 @@ const onSubmit=e=>{
               type="text" />
             </fieldset>
 
-            <fieldset className="mb-4">
-              <label className="block text-sm text-gray-dark pb-2">Phone Number</label>
-              <input 
-               name='phonenumber'
-              onChange={e=>onChange(e)}
-              value={phonenumber}
-              className="block w-full border rounded py-2 px-3 text-sm text-gray-700" 
-              type="tel" />
-            </fieldset>
 
             <fieldset className="mb-4">
               <label className="block text-sm text-gray-dark pb-2">Message</label>

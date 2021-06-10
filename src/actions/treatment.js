@@ -1,15 +1,9 @@
-import React from 'react';
 import axios from 'axios';
 import { setAlert } from './alert';
-import jwt_decode from "jwt-decode";
-import setAuthToken from '../utils/setAuthtoken';
 
 import {
  GET_TREATMENT,
  TREATMENT_ERROR,
- UPDATE_TREATMENT,
- CLEAR_TREATMENT,
- DELETE_TREATMENT,
  GET_TREATMENTS,
 } from './types'
 
@@ -76,7 +70,7 @@ export const  getTreatmentbyID=(businessId)=>async dispatch=>{
           dispatch(setAlert('Treatment Added  Successfully', 'success'));
       
         
-            history.push('/');
+            history.push(`/businessess`);
           
         } catch (err) {
           const errors =err.response.data.errors;

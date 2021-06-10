@@ -36,8 +36,8 @@ import AppointmentById from './components/Pages/BusinessPage/Appointments/Appoin
 import TreatmentById from './components/Pages/BusinessPage/TreatmentById';
 import Privilage from './components/Pages/error/Privilage'
 import BusinessSignup from './components/Pages/AdminPages/BusinessSignup';
-
 import CountHome from './components/Pages/BusinessPage/count pages/CountHome';
+import EmailVerified  from './components/Pages/EmailVerified';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -63,6 +63,7 @@ const App = () => {
   
           <Private path='/count' component={CountHome} />
           <Route path='/about' component={About} />
+          <Route path='/email/confirmed' component={EmailVerified} />
           <Route path='/services' component={Services} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
@@ -75,7 +76,7 @@ const App = () => {
           <Route exact path='/business/register' component={BusinessRegister} />
           <Route exact path='/businessproffile/:businessId' component={Proffile} />
           <Private path='/businessess' component={BusinessComponet} />
-          <Business exact path='/appoint/:businessId' component={AppointmentById} />
+          <Business exact path='/appointment/:businessId' component={AppointmentById} />
           <Private exact path='/treatment/:businessId' component={TreatmentById} />
           <Admin path='/appointments' component={Appointments} />
           <Admin exact path='/adminHome' component={AdminHome}/>

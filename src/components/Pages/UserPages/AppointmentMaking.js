@@ -1,28 +1,11 @@
 import React, { useState,useEffect } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { pink } from '@material-ui/core/colors';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import { lightBlue } from '@material-ui/core/colors';
-import { blueGrey } from '@material-ui/core/colors';
 import { connect } from 'react-redux';
 import { setAlert } from '../../../actions/alert';
 import PropTypes from 'prop-types';
-import {withRouter} from 'react-router-dom'
 import {createAppointments} from '../../../actions/appointments'
 import {getProfilebyID} from '../../../actions/businessprofile'
-import { Hidden } from '@material-ui/core';
 import {getTreatmentbyID} from '../../../actions/treatment'
-import  TreatmentIdItem from '../BusinessPage/TreatmentIdItem'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +29,7 @@ const AppointmentMaking = ({setAlert
     treatmentId:'',
     age:'',
     gender:'',
-    startDate:''
+    start:''
 
   })
 
@@ -67,7 +50,7 @@ const AppointmentMaking = ({setAlert
     }, [loading,getProfilebyID,profile])
 
 
-const{firstname,lastname,businessId,age,phonenumber,treatmentId,gender,startDate}=formData; 
+const{firstname,lastname,businessId,age,phonenumber,treatmentId,gender,start}=formData; 
 
 const onChange=e=>setFormData(
   {
@@ -77,7 +60,7 @@ const onChange=e=>setFormData(
 
 const onSubmit=e=>{
   e.preventDefault();
-  if (firstname && lastname && businessId && treatmentId && phonenumber && startDate ) {
+  if (firstname && lastname && businessId && treatmentId && phonenumber && start ) {
 
     e.preventDefault()
     createAppointments(formData,history)
@@ -172,29 +155,6 @@ const onSubmit=e=>{
           </div>
 
           <div className='flex flex-wrap -mx-3 mb-6'>
-            <div className='w-full '>
-              <label
-                className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
-                htmlFor='bname'
-              >
-             Date
-              </label>
-              <input
-                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
-                id='date'
-                name='startDate'
-                value={startDate}
-                type='date'
-                placeholder='Date'
-                onChange={(e) => onChange(e)}
-              />
-            </div>
-          </div>
-
-         
-
-
-          <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label
                 className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
@@ -217,6 +177,37 @@ const onSubmit=e=>{
             </div>
           </div>
 
+
+
+
+
+
+
+
+
+
+          <div className='flex flex-wrap -mx-3 mb-6'>
+            <div className='w-full '>
+              <label
+                className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2'
+                htmlFor='bname'
+              >
+             Date
+              </label>
+              <input
+                className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+                id='date'
+                name='start'
+                value={start}
+                type='datetime-local'
+                placeholder='Date'
+                onChange={(e) => onChange(e)}
+              />
+            </div>
+          </div>
+  
+
+        
           <div className='flex flex-wrap -mx-3 mb-6'>
             <div className='w-full'>
               <label

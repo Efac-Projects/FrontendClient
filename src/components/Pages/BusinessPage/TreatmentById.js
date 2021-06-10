@@ -5,11 +5,9 @@ import Spinner from '../../layouts/Spinner'
 import TreatmentIdItem from './TreatmentIdItem'
 import {getTreatmentbyID} from '../../../actions/treatment'
 import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import { lightBlue } from '@material-ui/core/colors';
-import { green } from '@material-ui/core/colors';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {

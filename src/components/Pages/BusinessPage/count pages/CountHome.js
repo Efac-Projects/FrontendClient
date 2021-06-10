@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import Count from './Count'
 import Count2 from './Count2'
 // #region constants

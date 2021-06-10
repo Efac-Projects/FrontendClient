@@ -5,7 +5,7 @@ import Spinner from '../Spinner'
 const libraries=["places"];
 
 const mapContainerStyle={
-    width:'99vw',
+    width:'98vw',
     height:'100vh',
 }
 const center = {

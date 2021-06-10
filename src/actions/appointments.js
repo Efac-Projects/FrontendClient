@@ -1,17 +1,11 @@
-import React from 'react';
 import axios from 'axios';
 import { setAlert } from './alert';
-import jwt_decode from "jwt-decode";
-import setAuthToken from '../utils/setAuthtoken';
+
 
 import {
  GET_APPOINTMENT,
  APPOINTMENT_ERROR,
- UPDATE_APPOINTMENT,
- CLEAR_APPOINTMENT,
- DELETE_APPOINTMENT,
  GET_APPOINTMENTS,
- MAKE_APPOINTMENT
 } from './types'
 
 //Get all appointments
@@ -56,7 +50,7 @@ export const  getAppointments=()=>async dispatch=>{
           dispatch(setAlert('Appointment Added  Successfully', 'success'));
       
         
-            history.push('/');
+            history.push(`/businessess`);
           
         } catch (err) {
           const errors =err.response.data.errors;

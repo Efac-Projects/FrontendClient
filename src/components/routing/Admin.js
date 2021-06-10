@@ -15,7 +15,7 @@ const Admin = ({ component: Component,
         <Spinner />
       ) : isAuthenticated ? (
 
-        (user.userRole=='Admin')?
+        (user.userRole==='Admin')?
 
         <Component {...props} />:( <Redirect to="/index" />)
       ) : (

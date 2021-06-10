@@ -24,6 +24,8 @@ export const  getContacts=()=>async dispatch=>{
           type:GET_CONTACT,
           payload:res.data
       })
+
+
   } catch (err) {
       dispatch({
           type:CONTACT_ERROR,
@@ -86,7 +88,7 @@ export const createContact = (
       payload: res.data
     });
 
-    dispatch(setAlert( 'Thank you for contacting us' ,'success',<i className="material-icons">done</i>));
+   dispatch(setAlert('Thank you for contacting us','success'))
     history.push('/');
   } catch (err) {
     const errors =err.response.data.errors;

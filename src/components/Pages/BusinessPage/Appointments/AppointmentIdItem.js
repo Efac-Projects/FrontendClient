@@ -1,16 +1,7 @@
-import React, {useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PropTypes from 'prop-types'
-import Grid from '@material-ui/core/Grid';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import {Link} from 'react-router-dom'
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,9 +9,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
 }));
-
-
-
 
 
 function AppointmentIdItem({appointment:{
@@ -33,7 +21,7 @@ function AppointmentIdItem({appointment:{
 createdAt,
   age,
   gender,
-  startDate
+  start
   
 
 }}) 
@@ -49,7 +37,7 @@ createdAt,
   
       <div className="flex justify-between items-center px-6 py-4">
         <div className="bg-red-600 text-xs uppercase px-2 py-1 rounded-full border border-gray-200 text-gray-200 font-bold">Under Review</div>
-        <div className="text-sm">{startDate}</div>
+        <div className="text-sm">{start}</div>
       </div>
   
       <div className="px-6 py-4 border rounded-lg border-gray-200">

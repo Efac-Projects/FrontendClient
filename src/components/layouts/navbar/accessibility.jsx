@@ -10,17 +10,6 @@ const AccessibilityContainer = styled.div`
   margin-left: 10px;
 `;
 
-const LinkItem = styled.li`
-  width: 100%;
-  padding: 0 1.1em;
-  color: #222;
-  font-weight: 500;
-  font-size: 16px;
-  display: flex;
-
-  margin-bottom: 10px;
-`;
-
 const RegisterButton = styled.button`
   border: 0;
   outline: 0;

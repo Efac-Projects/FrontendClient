@@ -1,4 +1,4 @@
-import { GET_TREATMENTS, TREATMENT_ERROR, GET_TREATMENT, UPDATE_TREATMENT, CLEAR_TREATMENT} from "../actions/types"
+import { GET_TREATMENTS, TREATMENT_ERROR, GET_TREATMENT} from "../actions/types"
 
 const initalState={ 
     treatment:[],
@@ -8,7 +8,7 @@ const initalState={
     
 }
 
-export default function (state=initalState,action){
+export default function foo(state=initalState,action){
     const{type,payload}=action
 
     switch(type){

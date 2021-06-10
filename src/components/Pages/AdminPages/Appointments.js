@@ -1,6 +1,5 @@
 import React, {Fragment, useState, useEffect } from 'react';
 import PropTypes from 'prop-types'
-import {getAppointments} from '../../../actions/appointments'
 import {connect} from 'react-redux'
 import AppointmentItem from './AppointmentItem'
 import Spinner from '../../layouts/Spinner'
@@ -8,8 +7,7 @@ import {getProfiles} from '../../../actions/businessprofile'
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import { lightBlue } from '@material-ui/core/colors';
-import { green } from '@material-ui/core/colors';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {

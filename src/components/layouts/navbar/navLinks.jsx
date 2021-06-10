@@ -67,6 +67,10 @@ const NavLinks=({ auth: { isAuthenticated, loading,user } })=> {
         <LinkItem>
           <Link href='/contactus'>Contact Us</Link>
         </LinkItem>
+
+        <LinkItem>
+              <Link href='/map'>Our Network</Link>
+            </LinkItem>
         <LinkItem>
           <Link href='/count'>Check Crowd</Link>
         </LinkItem>
@@ -106,7 +110,7 @@ const NavLinks=({ auth: { isAuthenticated, loading,user } })=> {
                 <Link href='/contactus'>Contact Us</Link>
               </LinkItem>
               <LinkItem>
-                <Link href='/map'>Map</Link>
+                <Link href='/map'>Our Network</Link>
               </LinkItem>
               <LinkItem>
                 <Link href='/business/signup'> Signup-Business</Link>
@@ -121,7 +125,7 @@ const NavLinks=({ auth: { isAuthenticated, loading,user } })=> {
       {
           <Fragment>
             
-            {isAuthenticated && !loading ? ((user.userRole=='Admin') ? adminLinks:authLinks):guestLinks}
+            {isAuthenticated && !loading ? ((user.userRole==='Admin') ? adminLinks:authLinks):guestLinks}
           </Fragment>
         }
       </LinksWrapper>

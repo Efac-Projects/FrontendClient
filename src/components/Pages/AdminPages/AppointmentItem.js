@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import CardActions from '@material-ui/core/CardActions';
@@ -69,7 +69,7 @@ return(
                   </CardContent>
                   <CardActions>
                     <Button size='small' color='primary'>
-                    <Link to={`/appoint/${businessId}`}>
+                    <Link to={`/appointment/${businessId}`}>
                    All appointments of the business
                    </Link> 
                     </Button>

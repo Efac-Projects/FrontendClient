@@ -8,7 +8,7 @@ const initalState={
     
 }
 
-export default function (state=initalState,action){
+export default function foo(state=initalState,action){
     const{type,payload}=action
 
     switch(type){
