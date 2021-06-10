@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React ,{useState,useEffect} from 'react'
 import PropTypes from 'prop-types'
-import {Link} from 'react-router-dom'
-import Grid from '@material-ui/core/Grid';
-import { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import img from '../../../assests/Doc.jpg'
-import { Button } from '@material-ui/core';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from "@fullcalendar/interaction"; // needed
+import listPlugin from '@fullcalendar/list'; //For List View
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -47,10 +40,32 @@ function TreatmentIdItem({treatment:{
 
 
 {
-     
-    const classNamees = useStyles();
+
+//Calender
+const [events, setEvents] = useState([]);
+
+const schedule = () => {
+ 
+  fetch(`https://localhost:5001/api/appoinment/tretment/${treatmentId}`)
+    .then(res => {
+        return res.json();})
+        .then((data)=>{
+      console.log(data);
+       
+setEvents(data)
+        })
+      
+        .catch(err => {
+          console.log(err);
+        }); 
+      
+      }
+      useEffect(() => {
+        schedule();
+          
+          }, []);
+
   
-    
 return(
     <div>
 
@@ -123,6 +138,33 @@ return(
         </div>
 
     </div>
+    <div>
+      
+      <h1 className='text-red-600 text-italic'>You better see the appointment calender before make an appointment </h1>
+    
+      <FullCalendar
+        plugins={[ dayGridPlugin,interactionPlugin,listPlugin ]}
+        initialView="dayGridMonth"
+        headerToolbar={{
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay,listWeek'
+        }}
+
+
+
+
+        eventClick={
+          function(arg){
+            alert(arg.event.title)
+            alert(arg.event.start)
+            alert(arg.event.end)
+          }}  
+        events={events}
+      />
+  </div>
+
+
 </div>
 
 

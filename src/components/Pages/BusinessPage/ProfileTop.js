@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import img from '../../../assests/NewLanka.jpg';
 import { connect } from 'react-redux';
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+import interactionPlugin from "@fullcalendar/interaction"; // needed
+import listPlugin from '@fullcalendar/list'; //For List View
 import {
   StaticGoogleMap,
   Marker,
